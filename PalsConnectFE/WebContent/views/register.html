@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="css/register.css" type="text/css">
+<style>
+
+    body{
+		background: url(images/friends1.jpg) center center fixed no-repeat;
+		background-size:cover;
+		
+	}
+
+</style>
+
+</head>
+<body>
+
+
+		<div class="login">
+			<h1 class="loginheading">Register</h1>
+			<form>
+					<div class="form-group">
+						<label for="name">Username</label>
+						<input type="text"  ng-model=pal.username id="name" placeholder="Enter your name">
+					</div>
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input type="email"  ng-model=pal.email  id="email" placeholder="Enter your mail id">
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label>
+						<input type="password"  ng-model=pal.password  id="password" placeholder="Enter your password">
+					</div>
+					<div class="form-group">
+						<label for="cpassword">Confirm Passowrd</label>
+						<input type="password"  ng-model=pal.cpassword  id="cpassword" placeholder="Re-enter your password">
+					</div>
+					<div class="form-group">
+						<label for="gender">Gender</label>
+						&nbsp; &nbsp;<input type="radio" name="pal.gender" value="male"> Male
+						&nbsp; &nbsp;<input type="radio" name="pal.gender" value="female"> Female<br>
+					</div>
+					<div class="form-group">
+						<label for="dob">Date Of Birth</label>
+						<input type="date"  ng-model=pal.dob  id="email">
+					</div>
+					<div class="form-group">
+						<label for="phno">Phone Number</label>
+						<input type="text"  ng-model=pal.phno   placeholder="Enter your phone number">
+					</div>
+					<div class="form-group">
+						<label for="role">Role</label>
+						<input type="text"  ng-model=pal.role   placeholder="Enter your mail id">
+					</div>
+					
+					<div class="form-group">
+						<input type="hidden"  ng-model=pal.isonline>
+					</div>
+				<input type="submit"  ng-click="palregister()"class="btn btn-primary center-block" id="button">
+				<p class="loginbottomtext">Have an account? <a href="#/login">Login</a></p>
+			</form>
+		</div>
+
+	
+
+
+
+
+
+
+
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+
+</body>
+</html>

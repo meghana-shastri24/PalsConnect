@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div class="job">
+			<h1 class="Post Job">Register</h1>
+			<form>
+					<div class="form-group">
+						<label for="title">Job Title</label>
+						<input type="text"  ng-model=job.title>
+					</div>
+					<div class="form-group">
+						<label for="description">Job Description</label>
+						<input type="text"  ng-model=job.description>
+					</div>
+					<div class="form-group">
+						<label for="skillsrequired">Skills Required</label>
+						<input type="text"  ng-model=job.skillsrequired>
+					</div>
+					<div class="form-group">
+						<label for="salary">Salary</label>
+						<input type="text"  ng-model=job.salary>
+					</div>
+					<div class="form-group">
+						<label for="location">Location</label>
+						<input type="text"  ng-model=job.location>
+					</div>
+					<div class="form-group">
+						<label for="postedon">Posted On</label>
+						<input type="text"  ng-model=job.postedon>
+					</div>
+					
+				<input type="submit"  ng-click="postjob()"class="btn btn-primary center-block" id="button">
+			</form>
+		</div>
+
+</body>
+</html>

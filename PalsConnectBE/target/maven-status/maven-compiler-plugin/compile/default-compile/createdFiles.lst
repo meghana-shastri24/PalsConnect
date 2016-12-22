@@ -1,0 +1,6 @@
+meghana\configure\WebAppInitializer.class
+meghana\dao\UserDaoImpl.class
+meghana\model\RegisterUser.class
+meghana\controller\UserController.class
+meghana\configure\DBConfig.class
+meghana\configure\WebAppConfig.class

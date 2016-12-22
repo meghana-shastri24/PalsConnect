@@ -1,0 +1,16 @@
+@CHARSET "ISO-8859-1";
+
+.jumbotron::before
+{
+filter:blur(4px);
+}
+
+h4
+{
+color:#0080c0;
+}
+
+
+
+
+
