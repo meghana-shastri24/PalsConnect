@@ -26,20 +26,9 @@ app.factory('JobService', function($http)
 	
 	jobservice.viewjob=function()
 	{
-		return $http.get(BASE_URL + "/viewjob")
-		.then(function(response)
-				{
-			console.log(response.status)
+		console.log('entering viewjob in service')
 
-			return response.status
-
-				},
-				function(response){
-					console.log(response.status)
-					return response.status
-				}
-		)
-
+		return $http.get(BASE_URL + "/viewjob");
 	}
 	return jobservice;
 		})

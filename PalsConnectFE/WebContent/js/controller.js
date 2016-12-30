@@ -1,4 +1,4 @@
-app.controller('PalController', function($scope, PalService, $location, $rootScope)
+app.controller('PalController', function($scope, PalService, $cookieStore, $location, $rootScope)
 		{
 	console.log('entering the controller')
 	
@@ -32,6 +32,8 @@ app.controller('PalController', function($scope, PalService, $location, $rootSco
 				$scope.pal=response.data;
 				$rootScope.currentUser=$scope.pal;
 
+				$cookieStore.put('currentUser',$rootScope.currentUser)
+
 				$location.path("/");
 			},
 			function(response){
@@ -43,21 +45,6 @@ app.controller('PalController', function($scope, PalService, $location, $rootSco
 	
 	}
 	
-	$rootScope.logout=function(){
-		console.log('logout function')
-		delete $rootScope.currentUser;
-		
-		PalService.logout()
-		.then(function(response){
-			console.log("logged out successfully..");
-			$scope.message="Logged out Successfully";
-			$location.path('/login')
-		},
-		function(response){
-			console.log(response.status);
-		})
-		
-	}
 	
 
 

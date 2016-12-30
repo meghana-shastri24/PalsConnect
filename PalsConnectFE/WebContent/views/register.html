@@ -3,77 +3,166 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Register</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-  <link rel="stylesheet" href="css/register.css" type="text/css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="resources/materialize/css/materialize.min.css"/> 
+	<script src="resources/materialize/js/materialize.min.js"/></script>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 
     body{
 		background: url(images/friends1.jpg) center center fixed no-repeat;
 		background-size:cover;
+		}
 		
-	}
+		.input-field label {
+     color: white;
+   }
 
+   .input-field input[type=text]:focus + label {
+     color: white;
+   }
+   
+   
+   .input-field input[type=password]:focus + label {
+     color: white;
+   }
+
+   
+   
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid white;
+     box-shadow: 0 1px 0 0 white;
+   }
+   
+   .input-field input[type=password]:focus {
+     border-bottom: 1px solid white;
+     box-shadow: 0 1px 0 0 white;
+   }
+   
+   .input-field input[type=email]:focus {
+     border-bottom: 1px solid white;
+     box-shadow: 0 1px 0 0 white;
+   }
+   
+   .input-field input[type=date]:focus {
+     border-bottom: 1px solid white;
+     box-shadow: 0 1px 0 0 white;
+   }
+   
+   .input-field input[type=radio]:focus {
+     border-bottom: 1px solid white;
+     box-shadow: 0 1px 0 0 white;
+   }
+   
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid green;
+     box-shadow: 0 1px 0 0 white;
+   }
+   
+   
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid red;
+     box-shadow: 0 1px 0 0 #000;
+   }
+
+h1
+{
+color:white;
+font-style:italic;
+    font-family: GillSans;
+}
 </style>
 
 </head>
 <body>
 
 
-		<div class="login">
-			<h1 class="loginheading">Register</h1>
-			<form>
-					<div class="form-group">
-						<label for="name">Username</label>
-						<input type="text"  ng-model=pal.username id="name" placeholder="Enter your name">
+<div class="container center-align">
+
+			<div class="row">
+						<h1 class="loginheading">Sign Up</h1>
+			
+    			<form class="col s12 m6 l6 offset-m2 offset-l3">
+     					 <div class="row ">
+					<div class="input-field col s12">
+						<label for="name" data-error="wrong" data-success="right">Username</label>
+						<input type="text"  ng-model=pal.username id="name" >
 					</div>
-					<div class="form-group">
-						<label for="email">Email</label>
-						<input type="email"  ng-model=pal.email  id="email" placeholder="Enter your mail id">
+					<div class="input-field col s12">
+						<label for="email" data-error="wrong" data-success="right">Email</label>
+						<input type="email"  ng-model=pal.email  id="email" >
 					</div>
-					<div class="form-group">
-						<label for="password">Password</label>
-						<input type="password"  ng-model=pal.password  id="password" placeholder="Enter your password">
+					<div class="input-field col s12">
+						<label for="password" data-error="wrong" data-success="right">Password</label>
+						<input type="password"  ng-model=pal.password  id="password" >
 					</div>
-					<div class="form-group">
-						<label for="cpassword">Confirm Passowrd</label>
-						<input type="password"  ng-model=pal.cpassword  id="cpassword" placeholder="Re-enter your password">
+					<div class="input-field col s12">
+						<label for="cpassword" data-error="wrong" data-success="right">Confirm Passowrd</label>
+						<input type="password"  ng-model=pal.cpassword  id="cpassword" >
 					</div>
-					<div class="form-group">
-						<label for="gender">Gender</label>
-						&nbsp; &nbsp;<input type="radio" name="pal.gender" value="male"> Male
-						&nbsp; &nbsp;<input type="radio" name="pal.gender" value="female"> Female<br>
-					</div>
-					<div class="form-group">
-						<label for="dob">Date Of Birth</label>
-						<input type="date"  ng-model=pal.dob  id="email">
-					</div>
-					<div class="form-group">
-						<label for="phno">Phone Number</label>
-						<input type="text"  ng-model=pal.phno   placeholder="Enter your phone number">
-					</div>
-					<div class="form-group">
-						<label for="role">Role</label>
-						<input type="text"  ng-model=pal.role   placeholder="Enter your mail id">
-					</div>
+					<div class="input field col s12"><label class="white-text" for="gender">Gender</label> 
+		<input type="radio" class="with-gap white-text " name="gender" ng-model="pal.gender" value="Male"  id="male" required> <label for="male" class="white-text">Male</label>
+		<input type="radio" class="with-gap white-text" name="gender" ng-model="pal.gender" value="Female"  id="female" > <label for="female" class="white-text">Female</label>
+		</div>
+					<div class="input-field col s12">
+					<label for="date" data-error="wrong" data-success="right">Date of Birth</label>
 					
-					<div class="form-group">
-						<input type="hidden"  ng-model=pal.isonline>
+						<input class="white-text datepicker" type="date"   ng-model=pal.dob  id="date">
 					</div>
-				<input type="submit"  ng-click="palregister()"class="btn btn-primary center-block" id="button">
-				<p class="loginbottomtext">Have an account? <a href="#/login">Login</a></p>
+					<div class="input-field col s12">
+						<label for="phno" data-error="wrong" data-success="right">Phone Number</label>
+						<input type="text"  ng-model=pal.phno   >
+					</div>
+					<div class="input field col s12"><label class="white-text" for="role">Role</label> 
+		<input type="radio" class="with-gap" name="role" ng-model="pal.role" value="Student"  id="student" required> <label for="student" class="white-text">Student</label>
+<input type="radio" class="with-gap" name="role" ng-model="pal.role" value="Employee"  id="employee" required> <label for="employee" class="white-text">Employee</label>		</div>
+	<input type="radio" class="with-gap" name="role" ng-model="pal.role" value="Trainee"  id="trainee" required> <label for="trainee" class="white-text">Trainee</label>		</div>
+					
+					
+				
+				 <p class=" center-align">
+                                <input class="btn btn-medium waves-effect waves-light" type="submit" name="action" ng-click="palregister()"></input>
+                            
+                 </p>
+                 
+                 			<p class="loginbottomtext center-align">Have an account? <a href="#/login">Login</a></p>
+                 
+				
+				
+				</div>
+				
 			</form>
 		</div>
+	</div>
+	
+	
+	
+	
+	
+		
+<script>
 
+$('.datepicker').pickadate({
+	format:'yyyy-mm-dd',
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+
+</script>
 	
 
 
 
 
 
+  <script src="resources/materialize/js/jquery-3.1.1.min.js"/></script>
 
 
 
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
 
 </body>
 </html>

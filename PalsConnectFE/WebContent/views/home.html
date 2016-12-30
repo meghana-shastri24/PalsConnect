@@ -3,50 +3,46 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Home</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-  <link rel="stylesheet" href="css/home.css" type="text/css">
+	<link rel="stylesheet" href="resources/materialize/css/materialize.min.css"/> 
+
 <style>
-
-.jumbotron
+body
 {
-background: url(images/Facebook-friends.jpg) no-repeat;
-background-size:cover;
-height:1000px;
-width:1500px;
-margin-top:-20px;
-margin-left:-50px;
+background: url('images/Facebook-friends1.jpg') center center fixed no-repeat;
+background-size: cover;
+margin-left:20px;
+
+
 }
 
-h1
+h2
 {
-	font-family:  cursive;
-	    color: #FFFFFF;
+color:#0277bd;
+font-family:pypyrus;
+font-style:italic;
+margin-top:100px;
 }
+
+h4,h5
+{
+
+color:white;
+}
+
 
 </style>
 </head>
-<body>  
- 
- <div class="jumbotron">
-  <div class="container" style="">
-  <h1>PalsConnect</h1>
-  <h4><strong> Share, Connect, Create, Inspire</strong></h4>
+<body>
   
- <p >Create account...Connect with friends..</p>
+ 
+ <div class="container-fluid center-align "  id="p">
+ <h2>Welcome To PalsConnect</h2>
+  <h4 ><strong> Share, Connect, Create, Inspire</strong></h4>
+  
+ <h5 ng-hide="currentUser.id">Create account...Connect with friends..</h5>
  	
- 	<button class="btn-md btn btn-primary  ">Sign Up</button>
+ 	<a href="#/register" ng-hide="currentUser.id" class="btn-md btn btn-primary">Sign Up</a>
  </div>
-</div>
-
-
- 
- 
- 
- 
- 
- 
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
 
 </body>
 </html>

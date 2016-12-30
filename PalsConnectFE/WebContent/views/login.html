@@ -3,36 +3,69 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-  <link rel="stylesheet" href="css/login.css" type="text/css">
+	<link rel="stylesheet" href="resources/materialize/css/materialize.min.css"/> 
+  
   <style>
 
     body{
-		background: url(images/Facebook-friends.jpg) center center fixed no-repeat;
+		background: url(images/ff.jpg) center center fixed no-repeat;
 		background-size:cover;
 		
 	}
+	
+	h4
+	{
+	color:white;
+	
+	}
+	
+	.input-field label {
+     color: white;
+   }
+
+   .input-field input[type=text]:focus + label {
+     color: white;
+   }
+   
+   
+   .input-field input[type=password]:focus + label {
+     color: white;
+   }
+
+   
+   
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid white;
+     box-shadow: 0 1px 0 0 white;
+   }
+   
+   .input-field input[type=password]:focus {
+     border-bottom: 1px solid white;
+     box-shadow: 0 1px 0 0 white;
+   }
 
 </style>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
-           
-            <div class="wrap">
-                <p class="form-title">
-                    LOGIN</p>
-
-                <form class="login">
-                <input type="text" ng-model=pal.username placeholder="Username" />
-                <input type="password" ng-model=pal.password placeholder="Password" />
-                <input type="submit" value="Login" ng-click='pallogin()' class="btn btn-success btn-sm" />
-                </form>
+        <div class="col l5 m6 s12 offset-l5 offset-m3">
+					<h4 class="center-align"> Login</h4>
+                <div class="input-field col s12">
+						<label for="name" data-error="wrong" data-success="right">Username</label>
+						<input type="text"  ng-model=pal.username id="name" >
+					</div>
+					<div class="input-field col s12">
+						<label for="password" data-error="wrong" data-success="right">Password</label>
+						<input type="password"  ng-model=pal.password id="name" >
+					</div>
+					<p class="center-align">
+                <input type="submit" value="Login" ng-click='pallogin()' class="btn btn-medium waves-effect waves-light" />
+                </p>
             </div>
         </div>
     </div>
-</div>
 
 </body>
 </html>

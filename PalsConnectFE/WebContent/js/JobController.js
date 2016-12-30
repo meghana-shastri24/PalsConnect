@@ -1,54 +1,51 @@
-app.controller('JobController',function($scope, JobService, $location)
+app.controller('JobController',function($scope,$location, JobService)
 		{
+	
+	console.log("Entering job controller")
+
 	$scope.job={title:'',description:'',skillsrequired:'',salary:'',location:''}
+	$scope.jobs={}
 	$scope.postjob=function(){
 		
-		JobService.postjob($scope.job).then(
-				
+		JobService.postjob($scope.job)
+		.then(function(response)
+		{
+			alert("posted successfully");
+			$location.path('/');
+		},
+		
 		function(response)
 		{
-			if(response.status==200)
-				{
-				console.log(response.status)
-
-				$location.path("/");
-				}
-			else
-				{
-				console.log(response.status)
-
-				$location.path("/postjob");
-				}
+			console.log("failure " +response.status);
+			if(response.status==401){
+				$location.path('/login')
+			}
+			else{
+			console.log(response.data.message)
+			$location.path('/postJob')
+			}
+		})
 		}
-		);
-		
-		
-		
-		
-	}
 	
-	$scope.viewjob=function()
+	function viewjob()
 	{
-		
-		JobService.viewjob().then(
-				
+		console.log('entering viewjob in controller')
+
+		JobService.viewjob()
+		.then(function(response)
+					{
+							console.log('viewjob success')
+							$scope.job=response.data;
+							console.log("success" + response.data)
+					},
+					
 					function(response)
 					{
-						if(response.status==200)
-							{
-
-							$location.path("/viewjob");
-							}
-						else
-							{
-							$location.path("/");
-							}
-					}		
-					);
-					
-		
-				
+					})
 	}
+
+	viewjob();
+	
 	
 	
 		})

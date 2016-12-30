@@ -1,23 +1,21 @@
 package meghana.controller;
 
-import java.net.URI;
+
 
 
 import java.util.List;
 
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import meghana.dao.UserDaoImpl;
 import meghana.model.RegisterUser;
@@ -57,6 +55,7 @@ public class UserController {
 	@RequestMapping(value="/pals/{id}", method=RequestMethod.GET)
 	public ResponseEntity<RegisterUser> getuserbyid(@PathVariable ("id") int id)
 	{
+		
 		RegisterUser u= userdaoimpl.getuserbyid(id);
 		
 		if(u==null)
@@ -68,6 +67,8 @@ public class UserController {
 	public ResponseEntity<?> register(@RequestBody RegisterUser user)
 	{
 		user.setIsonline(false);
+		user.setStatus(false);
+
 		RegisterUser pal=userdaoimpl.savePerson(user);
 		if(pal.getId()==0)
 		{
@@ -115,7 +116,8 @@ public class UserController {
 			return new ResponseEntity<Error>(HttpStatus.UNAUTHORIZED);
 		
 		else
-		{
+			
+		{	
 			validpal.setIsonline(true);
 			return new ResponseEntity<RegisterUser>(validpal, HttpStatus.OK);
 		}

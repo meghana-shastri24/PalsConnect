@@ -2,67 +2,69 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Home</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-  <link rel="stylesheet" href="css/index.css" type="text/css">
+<title>Home</title>    
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="resources/materialize/css/materialize.min.css"/> 
+	<script src="resources/materialize/js/materialize.min.js"/></script>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            
+      
+    
+
 
 </head>
 <body ng-app="pals">
 
-<div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                PalsConnect
-                </li>
-                
-                <li>
-                <a href="#/">Home</a>
-                </li>
-                
-                <li>
-                <a href="#/register" ng-hide="currentUser.id">Register</a>
-                </li>
-                
-                <li>
-                <a href="#/login" ng-hide="currentUser.id">Login</a>
-                </li>
-                
-                <li>
-                <a href="#/viewjob" ng-show="currentUser.id">Careers</a>
-                </li>
-                
-                <li>
-                <a href="#/postjob" ng-show="currentUser.id">Post Job</a>
-                </li>
-                <li>
-                <a href="" ng-click="logout()" ng-show="currentUser.id"><span class="fa fa-sign-out">logout</span></a>
-                </li>
-                
-                </ul>
+   <ul id="slide-out" class="side-nav fixed">
+    <li>
+    <div class="userView" style="height:250px;">
+      <div class="background" >
+        <img ng-hide="currentUser.id" src="images/img.jpg" style="height:250px; width:100%;">
+        <img ng-show="currentUser.id" src="resources/images/{{currentUser.username}}.jpg" style="height:250px; width:100%;">
+        
+      </div>
+    </div></li>
+    
+    <li><a class="waves-effect" href="#/">Home</a></li>
+    <li ng-hide="currentUser.id"><a  class="waves-effect"href="#/register">Register</a></li>
+        <li ng-hide="currentUser.id"><a class="waves-effect" href="#/login">Login</a></li>
+    	
+    	        <li ng-show="currentUser.id"><a class="waves-effect" href="#/viewjob">Careers</a></li>
+    	        <li ng-show="currentUser.role=='ADMIN'"><a class="waves-effect" href="#/postjob">Post Job</a></li>
+    	        <li ng-show="currentUser.id"><a class="waves-effect" href="" ng-click="logout()">Logout</a></li>
+    	
+    
+    
+    
+    
+  </ul>
+  <button  data-activates="slide-out" class="btn-floating btn-medium waves-effect waves-light red waves-effect waves-light button-collapse pull-left"><i class="material-icons large">menu</i></button>
+  
+  
+  
+  <div ng-view></div>  
+  
+  
+  <script>
+ $(".button-collapse").sideNav();
+ $('.collapsible').collapsible();     
+ </script>
+  
+  
+  <script src="resources/materialize/js/jquery-3.1.1.min.js"/></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-resource.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>   
 
-</div>
+	
 
- 
-  <div id="page-content-wrapper">
-                    
-	<div  ng-view></div>
-	</div>
- 
-	
-	
-	
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-resource.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.js"></script>
-	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="js/controller.js"></script>
 <script type="text/javascript" src="js/service.js"></script>
 <script type="text/javascript" src="js/JobController.js"></script>
 <script type="text/javascript" src="js/JobService.js"></script>
-
-
 </body>
 </html>

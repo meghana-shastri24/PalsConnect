@@ -2,6 +2,7 @@ package meghana.controller;
 
 import java.util.List;
 
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,19 +39,14 @@ public class JobController {
 	@RequestMapping(value="/viewjob", method=RequestMethod.GET)
 	public ResponseEntity<List<Job>> viewalljobs(HttpSession session)
 	{
-		RegisterUser pal=(RegisterUser) session.getAttribute("pal");
-		if (pal==null)
-		{
-			System.out.println("null");
-			return new ResponseEntity<List<Job>> (HttpStatus.UNAUTHORIZED);
-		}
-		else
-		{
-			System.out.println(pal);
+		System.out.println("in job controller be");
+
 
 			List<Job> job=jobdaoimpl.viewalljobs();
+			System.out.println(job);
+
 			return new ResponseEntity<List<Job>> (job,HttpStatus.OK);
-		}
+		
 	}
 
 }

@@ -1,4 +1,6 @@
-var app=angular.module("pals",[ 'ngRoute'])
+var app = angular.module("pals",[ 'ngRoute', 'ngCookies']);
+
+
 app.config(function($routeProvider) 
 		{
 	
@@ -15,18 +17,19 @@ app.config(function($routeProvider)
 		templateUrl: 'views/login.html'
 			})
 			
-	.when('/postjob',
-			{
-		controller:'JobController',
-		templateUrl:'views/postjob.html'
-			})
 	
 	.when('/viewjob',
 			{
-		controller:'JobController',
-		templateUrl:'views/viewjob.html'
+		templateUrl:'views/viewjob.html',
+		controller:'JobController'
+
 			})
-			
+			.when('/postjob',
+			{
+		templateUrl:'views/postjob.html',
+		controller:'JobController'
+			})
+	
 			
 			
 	.when('/',
@@ -34,3 +37,25 @@ app.config(function($routeProvider)
 		templateUrl: 'views/home.html'
 	})
 		})
+
+app.run(function($cookieStore,$rootScope,$location,PalService){  //entry point
+	
+	if($rootScope.currentUser==undefined)
+		$rootScope.currentUser=$cookieStore.get('currentUser')
+		
+	$rootScope.logout=function(){
+		console.log('logout function')
+		delete $rootScope.currentUser;
+		$cookieStore.remove('currentUser')
+		PalService.logout()
+		.then(function(response){
+			console.log("logged out successfully..");
+			$rootScope.message="Logged out Successfully";
+			$location.path('/login')
+		},
+		function(response){
+			console.log(response.status);
+		})
+		
+	}	
+})

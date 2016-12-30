@@ -34,12 +34,16 @@ private	SessionFactory sf;
 
 
 	public List<Job> viewalljobs() {
-		
+		System.out.println("in job dao");
+
 		Session session=sf.getCurrentSession();
 		Query query = session.createQuery("from Job");
-		List<Job> job=query.list();
-		session.flush();
 		
+		List<Job> job=query.list();
+		System.out.println(job);
+		session.flush();
+		System.out.println("in job dao end");
+
 		return job;
 	}
 
