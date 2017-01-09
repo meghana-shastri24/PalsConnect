@@ -1,5 +1,8 @@
-app.controller('PalController', function($scope, PalService, $cookieStore, $location, $rootScope)
+app.controller('PalController',  function($scope, PalService, $cookieStore, $location, $rootScope)
 		{
+	
+	$scope.message;
+
 	console.log('entering the controller')
 	
 		$scope.palregister=function(){
@@ -34,18 +37,67 @@ app.controller('PalController', function($scope, PalService, $cookieStore, $loca
 
 				$cookieStore.put('currentUser',$rootScope.currentUser)
 
-				$location.path("/");
+				$location.path("/welcome");
 			},
+			
+			
 			function(response){
-				 console.log('invalid username and password')
-				  $scope.message="Invalid Username and Password";
-				  $location.path("/login");
+				
+				$scope.message=response.data.message;
+					  $location.path("/login");
+						
+			
+				
+					
 			});
-	
-	
 	}
 	
+	$scope.sendrequest=function(username)
+	{
+		console.log("In friend controller")
+		
+		PalService.sendrequest(username).then(
+				
+		function(response)
+		{
 	
+					alert("Friend request sent");
+					getallpals();
+					$location.path("allpals")
+					
+		},
+		
+		function(response)
+		{
+			console.log("Errorr");
+		}
+				
+		)}
+	
+	
+	function getallpals()
+	{
+	PalService.getallpals().then(
+				
+				function(response)
+				{
+					console.log("Getting all users");
+					$scope.pals=response.data;
+					$rootScope.apals=$scope.pals;
+					console.log(response.data)
+					
+				},
+				
+				function(response)
+				{
+					console.log("errroorrr");
+				})
 
+	}
+	
+	getallpals();
+		
+	
+	
 
 		})

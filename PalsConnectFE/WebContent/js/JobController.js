@@ -3,9 +3,12 @@ app.controller('JobController',function($scope,$location, JobService)
 	
 	console.log("Entering job controller")
 
-	$scope.job={title:'',description:'',skillsrequired:'',salary:'',location:''}
-	$scope.jobs={}
+	$scope.job={jobid:'', title:'',description:'',skillsrequired:'',salary:'',location:'', postedon:''};
+	$scope.jobs={};
 	$scope.postjob=function(){
+		
+		console.log($scope.job)
+
 		
 		JobService.postjob($scope.job)
 		.then(function(response)
@@ -22,7 +25,7 @@ app.controller('JobController',function($scope,$location, JobService)
 			}
 			else{
 			console.log(response.data.message)
-			$location.path('/postJob')
+			$location.path('/postjob')
 			}
 		})
 		}
@@ -41,10 +44,33 @@ app.controller('JobController',function($scope,$location, JobService)
 					
 					function(response)
 					{
+						console.log('viewjob failure')
+
 					})
 	}
 
 	viewjob();
+	
+	
+	$scope.applied=function()
+	{
+		console.log("in applied");
+		JobService.applied.then(
+		function(response)
+		{
+			console.log("successfully applied");
+			alert("You have successfully applied to the job")
+			
+		},
+		
+		function(response)
+		{
+			console.log("unable to apply for job");
+
+		}
+		
+		)
+	}
 	
 	
 	

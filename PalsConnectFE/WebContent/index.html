@@ -20,27 +20,36 @@
    <ul id="slide-out" class="side-nav fixed">
     <li>
     <div class="userView" style="height:250px;">
+    
+        	 <a class="btn-floating btn-medium waves-light waves-effect red" href="#/imgupload"><i class="material-icons">mode_edit</i></a>
+    
       <div class="background" >
         <img ng-hide="currentUser.id" src="images/img.jpg" style="height:250px; width:100%;">
-        <img ng-show="currentUser.id" src="resources/images/{{currentUser.username}}.jpg" style="height:250px; width:100%;">
+        <img ng-show="currentUser.id" src="images/images/{{currentUser.username}}" style="height:250px; width:100%;">
         
       </div>
     </div></li>
     
-    <li><a class="waves-effect" href="#/">Home</a></li>
-    <li ng-hide="currentUser.id"><a  class="waves-effect"href="#/register">Register</a></li>
-        <li ng-hide="currentUser.id"><a class="waves-effect" href="#/login">Login</a></li>
+    <li><a ng-hide="currentUser.id" class="waves-effect waves-red" href="#/">Home</a></li>
+        <li><a ng-show="currentUser.id" class="waves-effect waves-red" href="#/welcome">Home</a></li>
+            <li><a ng-show="currentUser.role=='ADMIN'" class="waves-effect waves-red" href="#/admin">Home</a></li>
+    
+    <li ng-hide="currentUser.id"><a  class="waves-effect waves-red"href="#/register">Register</a></li>
+        <li ng-hide="currentUser.id"><a class="waves-effect waves-red" href="#/login">Login</a></li>
     	
-    	        <li ng-show="currentUser.id"><a class="waves-effect" href="#/viewjob">Careers</a></li>
-    	        <li ng-show="currentUser.role=='ADMIN'"><a class="waves-effect" href="#/postjob">Post Job</a></li>
-    	        <li ng-show="currentUser.id"><a class="waves-effect" href="" ng-click="logout()">Logout</a></li>
+    	        <li ng-show="currentUser.id"><a class="waves-effect waves-red " href="#/viewjob">Careers</a></li>
+    	        
+    	        
+    	        <li ng-show="currentUser.role=='ADMIN'"><a class="waves-effect waves-red" href="#/postjob">Post Job</a></li>
+    	        
+    	        <li ng-show="currentUser.id || currentUser.role=='ADMIN'"><a class="waves-effect waves-red" href="" ng-click="logout()">Logout</a></li>
     	
     
     
     
     
   </ul>
-  <button  data-activates="slide-out" class="btn-floating btn-medium waves-effect waves-light red waves-effect waves-light button-collapse pull-left"><i class="material-icons large">menu</i></button>
+  <button  data-activates="slide-out" class="btn-floating btn-medium red waves-effect waves-light button-collapse pull-left"><i class="material-icons large">menu</i></button>
   
   
   
@@ -66,5 +75,13 @@
 <script type="text/javascript" src="js/service.js"></script>
 <script type="text/javascript" src="js/JobController.js"></script>
 <script type="text/javascript" src="js/JobService.js"></script>
+<script type="text/javascript" src="js/admincontroller.js"></script>
+<script type="text/javascript" src="js/adminservice.js"></script>
+
+   <script type="text/javascript" src="js/FriendController.js"></script>
+<script type="text/javascript" src="js/FriendService.js"></script>
+      
+   <script type="text/javascript" src="js/BlogController.js"></script>
+<script type="text/javascript" src="js/BlogService.js"></script>
 </body>
 </html>

@@ -84,25 +84,25 @@ font-style:italic;
 <div class="container center-align">
 
 			<div class="row">
-						<h1 class="loginheading">Sign Up</h1>
+						<h1 class="loginheading">Connect With Us</h1>
 			
     			<form class="col s12 m6 l6 offset-m2 offset-l3">
      					 <div class="row ">
 					<div class="input-field col s12">
 						<label for="name" data-error="wrong" data-success="right">Username</label>
-						<input type="text"  ng-model=pal.username id="name" >
+						<input type="text" class="validate"  ng-model=pal.username id="name" >
 					</div>
 					<div class="input-field col s12">
 						<label for="email" data-error="wrong" data-success="right">Email</label>
-						<input type="email"  ng-model=pal.email  id="email" >
+						<input type="email" class="validate"  ng-model=pal.email  id="email" >
 					</div>
 					<div class="input-field col s12">
 						<label for="password" data-error="wrong" data-success="right">Password</label>
-						<input type="password"  ng-model=pal.password  id="password" >
+						<input type="password" class="validate" ng-model=pal.password  id="password" >
 					</div>
 					<div class="input-field col s12">
 						<label for="cpassword" data-error="wrong" data-success="right">Confirm Passowrd</label>
-						<input type="password"  ng-model=pal.cpassword  id="cpassword" >
+						<input type="password" class="validate" ng-model=pal.cpassword  id="cpassword" >
 					</div>
 					<div class="input field col s12"><label class="white-text" for="gender">Gender</label> 
 		<input type="radio" class="with-gap white-text " name="gender" ng-model="pal.gender" value="Male"  id="male" required> <label for="male" class="white-text">Male</label>
@@ -111,11 +111,11 @@ font-style:italic;
 					<div class="input-field col s12">
 					<label for="date" data-error="wrong" data-success="right">Date of Birth</label>
 					
-						<input class="white-text datepicker" type="date"   ng-model=pal.dob  id="date">
+						<input class="white-text datepicker validate active" type="date"   ng-model=pal.dob  id="date">
 					</div>
 					<div class="input-field col s12">
 						<label for="phno" data-error="wrong" data-success="right">Phone Number</label>
-						<input type="text"  ng-model=pal.phno   >
+						<input type="text" class="validate" ng-model=pal.phno   >
 					</div>
 					<div class="input field col s12"><label class="white-text" for="role">Role</label> 
 		<input type="radio" class="with-gap" name="role" ng-model="pal.role" value="Student"  id="student" required> <label for="student" class="white-text">Student</label>
@@ -125,7 +125,7 @@ font-style:italic;
 					
 				
 				 <p class=" center-align">
-                                <input class="btn btn-medium waves-effect waves-light" type="submit" name="action" ng-click="palregister()"></input>
+                                <input class="btn btn-medium waves-effect waves-light" type="submit" value="Register" name="action" ng-click="palregister()"></input>
                             
                  </p>
                  

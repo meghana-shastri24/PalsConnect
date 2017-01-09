@@ -5,30 +5,30 @@ app.factory('JobService', function($http)
 
 	var jobservice=this;
 	
+	
 	jobservice.postjob=function(job)
 	{
-		
-		return $http.post(BASE_URL + "/postjob", job)
-		.then(function(response)
-				{
-			console.log(response.status)
+		console.log('entering postjob in service')
+		console.log(job)
 
-			return response.status
+	return $http.post(BASE_URL + "/postjob", job)
+	}	
+	
 
-				},
-				function(response){
-					console.log(response.status)
-					return response.status
-				}
-		)
 
-	}
 	
 	jobservice.viewjob=function()
 	{
 		console.log('entering viewjob in service')
 
-		return $http.get(BASE_URL + "/viewjob");
+		return $http.get(BASE_URL + "viewjob");
 	}
+	
+	jobservice.applied=function()
+	{
+		console.log("applied in service")
+		return $http.put(BASE_URL  + "applied");
+	}
+	
 	return jobservice;
 		})

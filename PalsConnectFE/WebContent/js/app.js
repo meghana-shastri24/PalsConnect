@@ -31,10 +31,65 @@ app.config(function($routeProvider)
 			})
 	
 			
+		.when('/welcome',
+				{
 			
+			templateUrl:'views/welcome.html'
+				})	
+				
+		.when('/imgupload',
+		{
+		
+			templateUrl:'views/imageupload.html'
+		})
+		
+		.when('/admin',
+		{
+		
+			controller:'AdminController',
+			templateUrl:'views/admin.html'
+		})
+		
+		.when('/sendrequest',
+		{
+		
+			controller:'PalController',
+			templateUrl:'views/allpals.html'
+		})
+		
+		
+		.when('/pendingrequest',
+		{
+		
+			controller:'FriendController',
+			templateUrl:'views/pending.html'
+		})
+		
+		.when('/newblog',
+		{
+		
+			controller:'BlogController',
+			templateUrl:'views/newblog.html'
+		})
+		
+		.when('/blog',
+		{
+		
+			controller:'BlogController',
+			templateUrl:'views/getBlogs.html'
+		})
+				
 	.when('/',
 	{
+		
 		templateUrl: 'views/home.html'
+	})
+	
+	.when('/userslist',
+	{
+		controller:'AdminController',
+		
+		templateUrl: 'views/userslist.html'
 	})
 		})
 
