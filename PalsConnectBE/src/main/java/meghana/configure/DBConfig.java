@@ -15,6 +15,10 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import meghana.model.Blog;
+import meghana.model.BlogComment;
+import meghana.model.DisplayPicture;
+import meghana.model.Friend;
 import meghana.model.Job;
 import meghana.model.RegisterUser;
 
@@ -64,7 +68,7 @@ public class DBConfig {
 	
    sessionBuilder.addProperties(getHibernateProperties());
 	
-	sessionBuilder.addAnnotatedClasses(RegisterUser.class, Job.class);
+	sessionBuilder.addAnnotatedClasses(Friend.class, RegisterUser.class, Job.class, DisplayPicture.class, Blog.class, BlogComment.class);
 	
 	System.out.println("Database connected");
 		

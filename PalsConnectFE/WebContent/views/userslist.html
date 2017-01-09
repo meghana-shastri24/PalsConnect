@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+	<link rel="stylesheet" href="resources/materialize/css/materialize.min.css"/> 
+	<script src="resources/materialize/js/materialize.min.js"/></script>
+</head>
+<body>
+
+hiiiiiiiiiiiiiiii
+
+<div ng-repeat="p in pal">
+<div class="row">
+        <div class="col s12 m7">
+          <div class="card">
+            <div class="card-image">
+              <img src="images/friends.jpg">
+              <span class="card-title">{{p.username}}</span>
+            </div>
+            <div class="card-content">
+              <p>{{p.role}}<br>
+              		{{p.email}}<br></p>
+            </div>
+            <div class="card-action">
+              <a  ng-click="permit(p)">Permit</a>
+                            <a  ng-click="deny(p)">Deny</a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>        
+</body>
+</html>

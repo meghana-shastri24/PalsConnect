@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Create Blog</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="resources/materialize/css/materialize.min.css"/> 
+	<script src="resources/materialize/js/materialize.min.js"/></script>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+
+</style>
+</head>
+<body>
+<div class="container center-align">
+<h2 class="center-align"> Post your article</h2>
+<form class="col s12 m6 l6 offset-m2 offset-l4">
+     					 <div class="row ">
+					<div class="input-field col s12">
+						<label for="title" data-error="wrong" class="active" data-success="right">Title</label>
+						<input type="text" class="validate" ng-model=blogPost.title id="title" >
+					</div>
+		<div class="input-field col s12">
+			<label for="textarea1" data-error="wrong" class="active" data-success="right">Description</label>
+			<textarea id="textarea1" ng-model=blogPost.body  class="materialize-textarea validate"></textarea>
+						
+		</div>
+		<p  class="center-align">
+ <input class="btn btn-medium waves-effect waves-light red center-text" id="button" type="submit" value="Post Blog" name="action" ng-click="newblog()"></input>
+	</p>
+					</div>
+					</form>
+					
+					
+</div>
+<script>
+					
+$('#textarea1').val(''); 
+$('#textarea1').trigger('autoresize');
+$(document).ready(function() {
+    Materialize.updateTextFields();
+  });
+					
+</script>
+					  <script src="resources/materialize/js/jquery-3.1.1.min.js"/></script>
+					
+					
+</body>
+</html>

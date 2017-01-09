@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="Pals")
+@Table(name="pal")
 public class RegisterUser {
 	
 @Id
@@ -29,7 +29,7 @@ private String gender;
 private boolean isonline;
 private Date dob;
 private String role;
-private boolean status;
+private char status;
 
 
 
@@ -97,11 +97,12 @@ public String getGender() {
 public void setGender(String gender) {
 	this.gender = gender;
 }
-public boolean isStatus() {
+public char getStatus() {
 	return status;
 }
-public void setStatus(boolean status) {
+public void setStatus(char status) {
 	this.status = status;
 }
+
 
 }

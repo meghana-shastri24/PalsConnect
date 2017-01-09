@@ -3,6 +3,8 @@ package meghana.controller;
 
 
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 
 
@@ -17,14 +19,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import meghana.dao.DpDaoImpl;
 import meghana.dao.UserDaoImpl;
+import meghana.model.DisplayPicture;
 import meghana.model.RegisterUser;
+import meghana.model.error;
 
 @RestController
 public class UserController {
 	
 	@Autowired
 	UserDaoImpl userdaoimpl;
+	
+	@Autowired
+	DpDaoImpl dpdaoimpl;
 	
 	public UserDaoImpl getuserdaoimpl() { 
 		return userdaoimpl;
@@ -35,44 +43,49 @@ public class UserController {
 		this.userdaoimpl = userdaoimpl;
 	}
 	
+	//getallusers
 	@RequestMapping(value="/pals", method=RequestMethod.GET)
-	public ResponseEntity<List<RegisterUser>> getallusers()
+	public ResponseEntity<?> getallusers(HttpSession session)
 	{
 		
-		System.out.println("in pals 1");
-		List<RegisterUser> r=userdaoimpl.getallusers();
-		System.out.println("in pals 2");
+			RegisterUser user=(RegisterUser)session.getAttribute("pal");
+			
+			if(user==null)
+			{
+				error e=new error(4,"User doesnt exist..Please register to continue");
 
-		
-		if(r.isEmpty())
-		return new ResponseEntity<List<RegisterUser>> (HttpStatus.NO_CONTENT);
-		
-		return new ResponseEntity<List<RegisterUser>> (r,HttpStatus.OK);
+				return new ResponseEntity<error>(e,HttpStatus.UNAUTHORIZED);
+			
+			}
+			
+			else
+			{
+				List<RegisterUser> users=userdaoimpl.getallusers(user);
+				for(RegisterUser u:users)
+					System.out.println("IsONline " + u.getIsonline());
+				return new ResponseEntity<List<RegisterUser>>(users,HttpStatus.OK);
+			}
 		
 	}
+	
+//7795614646
+	
 
 	
-	@RequestMapping(value="/pals/{id}", method=RequestMethod.GET)
-	public ResponseEntity<RegisterUser> getuserbyid(@PathVariable ("id") int id)
-	{
-		
-		RegisterUser u= userdaoimpl.getuserbyid(id);
-		
-		if(u==null)
-		return new ResponseEntity<RegisterUser> (HttpStatus.NO_CONTENT);
-		return new ResponseEntity<RegisterUser> (u,HttpStatus.OK);
-	}
 	
+	//registeruser
 	@RequestMapping(value="/pals", method=RequestMethod.POST)
 	public ResponseEntity<?> register(@RequestBody RegisterUser user)
 	{
 		user.setIsonline(false);
-		user.setStatus(false);
+		user.setStatus('P');
 
 		RegisterUser pal=userdaoimpl.savePerson(user);
 		if(pal.getId()==0)
 		{
-			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+			error e=new error(2,"Sorry unable to insert");
+
+			return new ResponseEntity<error>(e,HttpStatus.CONFLICT);
 
 		}
 		else{
@@ -81,8 +94,9 @@ public class UserController {
 		}
 	}
 	
+	//updateuser
 	@RequestMapping(value="/pals/{id}", method=RequestMethod.POST)
-	public ResponseEntity<RegisterUser> updatepal(@PathVariable ("id") int id, @RequestBody RegisterUser pals)
+	public ResponseEntity<RegisterUser> updatepal(@PathVariable int id, @RequestBody RegisterUser pals)
 	{
 		RegisterUser pal=userdaoimpl.updatepal(pals);
 		if(pal==null)
@@ -91,7 +105,9 @@ public class UserController {
 		return new ResponseEntity<RegisterUser> (pal,HttpStatus.OK);
 	}
 
-	@RequestMapping(value="/pals/{id}", method=RequestMethod.DELETE)
+	
+	//deleteuser
+	/*@RequestMapping(value="/pals/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> deletepal(@PathVariable ("id") int id)
 	{
 		
@@ -102,34 +118,81 @@ public class UserController {
 			return new ResponseEntity<Void> (HttpStatus.OK);
 		
 
-	}
+	}*/
 	
+	//login
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public ResponseEntity<?> login(@RequestBody RegisterUser pal, HttpSession session){
 		
 		System.out.println("In User Controller BE");
-		RegisterUser validpal=userdaoimpl.validate(pal);
-		
-		System.out.println(validpal);
+		RegisterUser validatedpal=userdaoimpl.validate(pal);
+		System.out.println(validatedpal);
 
-		if(validpal==null)
-			return new ResponseEntity<Error>(HttpStatus.UNAUTHORIZED);
+		if(validatedpal==null)
+		{
+			error e=new error(1,"User doesnt exist..Please register to continue");
+
+			return new ResponseEntity<error>(e,HttpStatus.UNAUTHORIZED);
+		}
 		
+		if(validatedpal.getStatus()=='P')
+		{
+			error e=new error(3,"Admin yet to approve your registration..");
+			return new ResponseEntity<error>(e,HttpStatus.CONFLICT);
+
+			
+		}
 		else
 			
 		{	
-			validpal.setIsonline(true);
-			return new ResponseEntity<RegisterUser>(validpal, HttpStatus.OK);
+			session.setAttribute("pal", validatedpal);
+			
+			System.out.println(pal);
+			validatedpal.setIsonline(true);
+			
+			userdaoimpl.updatepal(validatedpal);
+			System.out.println(validatedpal.getIsonline());
+			
+			  DisplayPicture getimage=dpdaoimpl.getFile(pal.getUsername());
+			  if(getimage!=null){
+		  	String name=getimage.getDpname();
+		  	System.out.println(getimage.getDp());
+		  	byte[] imagefiles=getimage.getDp();
+		  	try{
+		  		String path=("C:/Users/user/workspace/PalsConnectFE/WebContent/images/images/"+pal.getUsername());
+		  		File file=new File(path);
+		  		//file.mkdirs();
+		  		FileOutputStream fos = new FileOutputStream(file);//to Write some data 
+		  		fos.write(imagefiles);
+		  		fos.close();
+		  		}catch(Exception e){
+		  		e.printStackTrace();
+		  		}
+			  }
+			  
+			return new ResponseEntity<RegisterUser>(validatedpal, HttpStatus.OK);
 		}
 		
 	}
 
+	//logout
 	@RequestMapping(value="/logout",method=RequestMethod.PUT)
 	public ResponseEntity<?> logout(HttpSession session){
 		RegisterUser user=(RegisterUser)session.getAttribute("pal");
 		if(user!=null){
 			user.setIsonline(false);
 			userdaoimpl.updatepal(user);
+		
+			try{
+                //change according to your workspace path and project name
+		  		String path="C:/Users/user/workspace/PalsConnectFE/WebContent/images/images/"+user.getUsername();
+		File file=new File(path);
+		System.out.println(file.delete());
+		
+		}catch(Exception e){
+		e.printStackTrace();
+		}
+		
 		}
 		session.removeAttribute("user");
 		session.invalidate();

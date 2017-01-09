@@ -2,9 +2,7 @@ package meghana.dao;
 
 import java.util.List;
 
-
-
-
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -30,20 +28,31 @@ public class UserDaoImpl {
 	}
 
 	@Transactional
-	public List<RegisterUser> getallusers() {
+	public List<RegisterUser> getallusers(RegisterUser user) {
 		
 		Session s=sf.getCurrentSession();
-		Query q=s.createQuery("from RegisterUser");
-		List<RegisterUser> users=q.list();
+		SQLQuery query=s.createSQLQuery("select * from pal where username in (select username from pal where username!=? minus(select toname from friend where fromname=? union select fromname from friend where toname=?))");		
+		
+		query.setString(0, user.getUsername());
+		query.setString(1, user.getUsername());
+		query.setString(2, user.getUsername());
+		query.addEntity(RegisterUser.class);
+		
+		List<RegisterUser> users=query.list();
+		System.out.println(users);
+
 		s.flush();
 		return users;
+		
 	}
 
 	@Transactional
-	public RegisterUser getuserbyid(int id) {
+	public RegisterUser getuserbyid(String string) {
 
 		Session s=sf.getCurrentSession();
-		RegisterUser u=(RegisterUser) s.get(RegisterUser.class, id);
+		Query query=s.createQuery("from RegisterUser where username=?");
+		query.setString(0, string);
+		RegisterUser u=(RegisterUser) query.uniqueResult();
 		s.flush();
 		return u;
 	}
@@ -85,12 +94,16 @@ public class UserDaoImpl {
 		Query query=s.createQuery("from RegisterUser where username=? and password=? ");
 		query.setString(0, pal.getUsername());
 		query.setString(1, pal.getPassword());
+		
+		
 		RegisterUser validpal=(RegisterUser) query.uniqueResult();
 		
-
+System.out.println(validpal);
 		
 		return validpal;
 	}
 
+	
+	
 	
 }
