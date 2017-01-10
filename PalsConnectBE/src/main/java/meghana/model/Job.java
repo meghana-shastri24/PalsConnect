@@ -11,21 +11,18 @@ public class Job {
 	
 	@Id
 	@GeneratedValue
-	private int jobid;
-	
+	private int id;
 	private String title;
 	private String description;
 	private String skillsrequired;
 	private int salary;
 	private String location;
 	private Date postedon;
-	
-	
-	public int getJobid() {
-		return jobid;
+	public int getId() {
+		return id;
 	}
-	public void setJobid(int jobid) {
-		this.jobid = jobid;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getTitle() {
 		return title;
@@ -57,6 +54,7 @@ public class Job {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	
 	public Date getPostedon() {
 		return postedon;
 	}
@@ -65,4 +63,6 @@ public class Job {
 	}
 	
 	
+	
+
 }

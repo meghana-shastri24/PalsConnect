@@ -19,49 +19,50 @@
 </head>
 <body>
 
-<div class="job">
-			<div class="row">
-			<h2 class="center-align" >Post New Job</h2>
-    <form class="col l6 m12 s12 offset-m2 offset-l4">
-      <div class="row">
-					<div class="input-field col s12">
-						<label for="title" data-error="wrong" data-success="right">Job Title</label>
-						<input type="text"  ng-model="job.title" id="title" >
-					</div>
-					<div class="input-field col s12">
-						<label for="description" data-error="wrong" data-success="right">Job Description</label>
-						<input type="text"  ng-model="job.description" id="description" >
-					</div>
-					<div class="input-field col s12">
-						<label for="skillsrequired" data-error="wrong" data-success="right">Skills Required</label>
-						<input type="text"  ng-model="job.skillsrequired" id="skillsrequired" >
-					</div>
-					<div class="input-field col s12">
-						<label for="salary" data-error="wrong" data-success="right">Salary</label>
-						<input type="text"  ng-model="job.salary" id="salary" >
-					</div>
-					<div class="input-field col s12">
-						<label for="location" data-error="wrong" data-success="right">Location</label>
-						<input type="text"  ng-model="job.location" id="location" >
-					</div>
-					<div class="input-field col s12">
-						<label for="date" data-error="wrong" data-success="right">Posted On</label>
-						<input type="date"   ng-model="job.postedon"  id="date">
-					</div>
-						
-				 <input type="submit" value="Post Job" name="action" ng-click="postjob()" class="btn btn-medium waves-effect waves-light center-block" id="button"></input>
-				 </div>
-			</form>
+	<form class="container" >
+
+<div class="row">
+		<div class="input-field col s6 ">
+			<input id="icon_prefix" type="text" class="validate" ng-model="job.title" required="required">
+			<label for="icon_prefix">Job Title</label>
+		</div>
+		<div class="input-field col s6 ">
+			<input id="icon_prefix" type="text" class="validate" ng-model="job.description" required>
+			<label for="icon_prefix">Job Description</label>
+		</div>
+		
+		<div class="input-field col s6 ">
+			<input id="icon_prefix" type="text" class="validate" ng-model="job.skillsrequired" required>
+			<label for="icon_prefix">Skill Required</label>
+		</div>
+		<div class="input-field col s6 ">
+			<input id="icon_prefix" type="password" class="validate" ng-model="job.salary"  required>
+			<label for="icon_prefix">Salary</label>
+		</div>
+		<div class="input-field col s6">
+			<input id="icon_prefix" type="password" class="validate" ng-model="job.location" required>
+			<label for="icon_prefix">Job location</label>
+		</div>
+	
+		 
 		</div>
 
-</div>
+		<a id="save" style="margin-top:5px;" class="waves-effect waves-light btn"  type="submit" ng-click="postjob()"><i class="material-icons left">person_add</i>Post Job</a>
+ 
+ 	
+	</form>
+	
+	
 <script>
+
+
 
 $('.datepicker').pickadate({
 	format:'yyyy-mm-dd',
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15 // Creates a dropdown of 15 years to control year
   });
+  
 
 </script>
   <script src="resources/materialize/js/jquery-3.1.1.min.js"/></script>

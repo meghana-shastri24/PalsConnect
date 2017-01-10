@@ -29,7 +29,7 @@ private RegisterUser postedby;
 
 
 @ManyToOne(fetch=FetchType.LAZY)
-@JoinColumn(name="blog_post_id")
+@JoinColumn
 private Blog blogpost;
 
 

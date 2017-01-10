@@ -1,3 +1,4 @@
+C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\dao\BlogDaoImpl.java
 C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\model\DisplayPicture.java
 C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\model\error.java
 C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\model\Friend.java
@@ -5,9 +6,12 @@ C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\controller\DpControl
 C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\dao\DpDaoImpl.java
 C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\model\Job.java
 C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\dao\UserDaoImpl.java
+C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\model\AppliedJobs.java
+C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\model\Blog.java
 C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\configure\WebAppConfig.java
 C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\controller\AdminController.java
 C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\controller\JobController.java
+C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\controller\BlogController.java
 C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\dao\FriendDaoImpl.java
 C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\dao\JobDaoImpl.java
 C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\model\RegisterUser.java
@@ -16,3 +20,4 @@ C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\configure\WebAppInit
 C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\controller\FriendController.java
 C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\controller\UserController.java
 C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\dao\AdminDaoImpl.java
+C:\Users\user\workspace\PalsConnectBE\src\main\java\meghana\model\BlogComment.java

@@ -11,7 +11,7 @@ app.factory('JobService', function($http)
 		console.log('entering postjob in service')
 		console.log(job)
 
-	return $http.post(BASE_URL + "/postjob", job)
+	return $http.post(BASE_URL + "postjob", job);
 	}	
 	
 

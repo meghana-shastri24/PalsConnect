@@ -78,6 +78,13 @@ app.config(function($routeProvider)
 			controller:'BlogController',
 			templateUrl:'views/getBlogs.html'
 		})
+		
+		.when('/getBlogDetail/:blogid',
+		{
+		
+			controller:'BlogDController',
+			templateUrl:'views/BlogDetail.html'
+		})
 				
 	.when('/',
 	{

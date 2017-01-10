@@ -85,8 +85,10 @@ private BlogDaoImpl blogdaoimpl;
 		}
 		System.out.println("BLOG COMMENT is " + blogComment);
 		System.out.println("BLOG COMMENT BODY " + blogComment.getBody());
-		
+		System.out.println("BLOG ID from blogpost " + blogComment.getBlogpost().getBlogid());
+
 		System.out.println("BLOG POST FROM BLOGCOMMENT " + blogComment.getBlogpost());
+
 		Blog blogPost=blogdaoimpl.getBlogPost(blogComment.getBlogpost().getBlogid());
 		if(blogPost==null){
 			error error=new error(2,"Blogpost not found");

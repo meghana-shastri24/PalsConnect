@@ -31,23 +31,20 @@ public class JobController {
 	JobDaoImpl jobdaoimpl;
 	
 	
-	@RequestMapping(value="/postjob", method=RequestMethod.POST)
-	public ResponseEntity<?> postjob(@RequestBody Job job, HttpSession session)
-	{
+	@RequestMapping(value="/postjob",method=RequestMethod.POST)
+	public ResponseEntity<?> postJob(@RequestBody Job job,HttpSession session){
 		
-		System.out.println("in postjob method");
-
-		RegisterUser user=(RegisterUser) session.getAttribute("pal");
-		if(user==null)
-		{
-			error e=new error(1, "User not logged in");
-			return new ResponseEntity<error> (e, HttpStatus.UNAUTHORIZED);
+		RegisterUser user=(RegisterUser)session.getAttribute("pal");	
+		if(user==null){	
+			error er=new error(1,"Unauthorized user.. login using valid credentials");
+			return new ResponseEntity<error>(er,HttpStatus.UNAUTHORIZED);
 		}
-		System.out.println("in postjob method");
-
-		jobdaoimpl.postjob(job);
-			return new ResponseEntity<Void> (HttpStatus.OK);		
-	}
+		else{
+	                job.setPostedon(Calendar.getInstance().getTime());
+					jobdaoimpl.postjob(job);
+				return new ResponseEntity<Void>(HttpStatus.OK);
+			
+	}}
 	
 	@RequestMapping(value="/viewjob", method=RequestMethod.GET)
 	public ResponseEntity<List<Job>> viewalljobs(HttpSession session)

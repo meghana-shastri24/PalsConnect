@@ -7,8 +7,10 @@ app.controller('PalController',  function($scope, PalService, $cookieStore, $loc
 	
 		$scope.palregister=function(){
 		
-			console.log('entering the function register in pal controller')
+			console.log('entering the function register in pal controller');
 		
+			console.log($scope.pal);
+			
 		PalService.register($scope.pal).then(
 
 					function(response){//success

@@ -11,25 +11,60 @@
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
 
+h2
+{
+color:white;
+font-family: sans-serif;
+font-style:italic;
+}
+
+body
+{
+background: url('images/WEB.png') center center fixed no-repeat;
+background-size:cover;
+}
+
+.input-field label {
+     color: white;
+   }
+
+   .input-field input[type=text]:focus + label {
+     color: white;
+   }
+   
+   
+   .input-field input[type=password]:focus + label {
+     color: white;
+   }
+   
+   .input-field input[type=textarea1]:focus + label {
+     color: white;
+   }
+
 </style>
 </head>
 <body>
 <div class="container center-align">
-<h2 class="center-align"> Post your article</h2>
-<form class="col s12 m6 l6 offset-m2 offset-l4">
+<form>
      					 <div class="row ">
+     					 <div class="col  l10 s12 m6 offset-m2 offset-l3">
+     					 <h2 class="center-align"> Post your article</h2>
+     					 
 					<div class="input-field col s12">
-						<label for="title" data-error="wrong" class="active" data-success="right">Title</label>
-						<input type="text" class="validate" ng-model=blogPost.title id="title" >
+						<label for="title" data-success="right">Title</label>
+						<input type="text"  ng-model=blogPost.title id="title" style="border-bottom: 1px solid white;
+     box-shadow: 0 1px 0 0 white;">
 					</div>
 		<div class="input-field col s12">
-			<label for="textarea1" data-error="wrong" class="active" data-success="right">Description</label>
-			<textarea id="textarea1" ng-model=blogPost.body  class="materialize-textarea validate"></textarea>
+			<label for="textarea1" >Description</label>
+			<textarea id="textarea1" ng-model=blogPost.body  class="materialize-textarea validate" style="border-bottom: 1px solid white;
+     box-shadow: 0 1px 0 0 white;"></textarea>
 						
 		</div>
 		<p  class="center-align">
  <input class="btn btn-medium waves-effect waves-light red center-text" id="button" type="submit" value="Post Blog" name="action" ng-click="newblog()"></input>
 	</p>
+					</div>
 					</div>
 					</form>
 					

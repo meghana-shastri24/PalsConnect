@@ -3,7 +3,7 @@ app.controller('JobController',function($scope,$location, JobService)
 	
 	console.log("Entering job controller")
 
-	$scope.job={jobid:'', title:'',description:'',skillsrequired:'',salary:'',location:'', postedon:''};
+	$scope.job={jobid:'', title:'',description:'',skillsrequired:'',salary:'',location:''};
 	$scope.jobs={};
 	$scope.postjob=function(){
 		

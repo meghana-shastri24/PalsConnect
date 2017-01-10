@@ -2,6 +2,7 @@ package meghana.dao;
 
 import java.util.List;
 
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -21,19 +22,11 @@ private	SessionFactory sf;
 	
 	
 	public void postjob(Job job) {
-		
-		System.out.println("in dao");
-
 		Session session=sf.getCurrentSession();
 		session.save(job);
-		System.out.println("in dao 1");
-
 		session.flush();
-		
 
 	}
-
-
 	public List<Job> viewalljobs() {
 		System.out.println("in job dao");
 

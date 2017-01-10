@@ -1,3 +1,5 @@
+meghana\controller\BlogController.class
+meghana\dao\BlogDaoImpl.class
 meghana\model\RegisterUser.class
 meghana\configure\DBConfig.class
 meghana\configure\WebAppInitializer.class
@@ -6,6 +8,9 @@ meghana\dao\DpDaoImpl.class
 meghana\model\Job.class
 meghana\dao\FriendDaoImpl.class
 meghana\model\error.class
+meghana\model\AppliedJobs.class
+meghana\model\Blog.class
+meghana\model\BlogComment.class
 meghana\dao\AdminDaoImpl.class
 meghana\controller\FriendController.class
 meghana\dao\UserDaoImpl.class

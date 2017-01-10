@@ -32,7 +32,12 @@
 
 .share-buttons li{
 	display: inline;
-}
+}	
+	
+	
+	<!--mchandru112@gmail.com--!>
+	
+	
 .post-preview > .post-meta {
   color: #808080;
   font-size: 18px;
@@ -129,9 +134,11 @@ hr {
 			
 			
                 <div class="post-preview">
-                    <a href="#/getBlogDetail/{{blogPost.id}}">
+                
+                    <a href="#/getBlogDetail/{{b.blogid}}">
                         <h4 class="post-title titleFont">
                         {{b.title}}
+                        
                         </h4>
                     </a>
                    <p class="post-meta"><i class="material-icons">schedule</i> {{b.postedon | date:'MM/dd/yyyy'}} by <a href="#">{{b.postedby.username}}</a></p>

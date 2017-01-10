@@ -1,5 +1,6 @@
 app.controller('BlogDController',function($routeParams,$scope,BlogService){
-	alert('entering blogdetailcontroller')
+	console.log('entering blogdetailcontroller')
+	
 	var id=$routeParams.blogid
 	$scope.blogPost={}
 	$scope.comment={body:'',blogPost:{}}
@@ -12,6 +13,7 @@ app.controller('BlogDController',function($routeParams,$scope,BlogService){
 			console.log(response.status)
 			$scope.blogPost=response.data;
 		},function(response){
+
 			console.log(response.status)
 		})
 	
@@ -20,10 +22,10 @@ app.controller('BlogDController',function($routeParams,$scope,BlogService){
 		BlogService.editPost()
 	}
 	
-	$scope.getComments=function(blogid){
+	$scope.getComments=function(id){
 		$scope.showComments=true;
-		console.log('getcomments ' + blogid)
-		$scope.comments=BlogService.getComments(blogid)
+		console.log('getcomments ' + id)
+		$scope.comments=BlogService.getComments(id)
 		.then(function(response){
 			$scope.comments=response.data;
 		},function(response){
@@ -33,11 +35,14 @@ app.controller('BlogDController',function($routeParams,$scope,BlogService){
 	}
 	
 	$scope.addComment=function(){
-		alert($scope.blogPost.id)
-		$scope.comment.blogPost.id = $scope.blogPost.id;
+		alert($scope.blogPost.blogid)
+		$scope.comment.blogPost.id = $scope.blogPost.blogid;
 		$scope.comment.blogPost=$scope.blogPost
 		alert($scope.comment.body)
 		alert($scope.comment.blogPost)
+		console.log($scope.comment.blogPost)
+		console.log($scope.comment)
+
         BlogService.addComment($scope.comment)
         .then(function(response){
         	console.log(response.data)

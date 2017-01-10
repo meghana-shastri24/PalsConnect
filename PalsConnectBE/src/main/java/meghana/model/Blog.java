@@ -25,6 +25,8 @@ public class Blog implements Serializable {
 		@Id
 		@GeneratedValue(strategy=GenerationType.AUTO)
 	private int blogid;
+		
+		
 	private Date postedon;
 
 	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)

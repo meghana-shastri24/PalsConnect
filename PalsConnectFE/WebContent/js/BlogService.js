@@ -18,6 +18,8 @@ app.factory('BlogService',function($http){
 	}
 	
 	blogService.addComment=function(comment){
+		console.log(comment)
+
 		return $http.post("http://localhost:8080/PalsConnectBE/blog/comment",comment)
 	}
 	blogService.getComments=function(blogId){
