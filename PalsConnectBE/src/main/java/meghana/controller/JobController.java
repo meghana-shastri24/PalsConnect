@@ -61,11 +61,27 @@ public class JobController {
 	
 	
 	@RequestMapping(value="/applied/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> applyjob(@PathVariable (value="id")int id, HttpSession session)
+	public ResponseEntity<?> applyjob(@PathVariable (value="id")int id, HttpSession session)
 	{
-		RegisterUser user=(RegisterUser)session.getAttribute("pal");	
+		
+		System.out.println("in apply job");
+		RegisterUser user=(RegisterUser)session.getAttribute("pal");
+		System.out.println(user);
+
+		if(user==null){	
+			
+			error er=new error(1,"Unauthorized user.. login using valid credentials");
+			return new ResponseEntity<error>(er,HttpStatus.UNAUTHORIZED);
+		}
+		else{
+		
 		Job job=jobdaoimpl.getjob(id);
+		System.out.println(job);
+
 		AppliedJobs ajob = jobdaoimpl.getAppliedJobbyJid(id,user.getId());
+		
+		System.out.println(ajob);
+
 		if(ajob==null){
 		AppliedJobs ja=new AppliedJobs();
 		ja.setJobid(id);
@@ -73,10 +89,18 @@ public class JobController {
 		ja.setPalid(user.getId());
 		ja.setName(user.getUsername());
 		jobdaoimpl.applyjob(ja);
-		return new ResponseEntity<Void>(HttpStatus.OK);	}
-		else
-			return new ResponseEntity<Void>(HttpStatus.OK);
+		System.out.println("success");
+
+		return new ResponseEntity<Void>(HttpStatus.OK);	
 		
+		}
+		else
+		{
+			System.out.println("erroorr");
+
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		}
+		}
 	}
 	
 	@RequestMapping(value="/appliedjob",method=RequestMethod.GET)

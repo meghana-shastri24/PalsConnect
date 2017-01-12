@@ -183,16 +183,6 @@ public class UserController {
 			user.setIsonline(false);
 			userdaoimpl.updatepal(user);
 		
-			try{
-                //change according to your workspace path and project name
-		  		String path="C:/Users/user/workspace/PalsConnectFE/WebContent/images/images/"+user.getUsername();
-		File file=new File(path);
-		System.out.println(file.delete());
-		
-		}catch(Exception e){
-		e.printStackTrace();
-		}
-		
 		}
 		session.removeAttribute("user");
 		session.invalidate();

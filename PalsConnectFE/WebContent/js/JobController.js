@@ -3,7 +3,7 @@ app.controller('JobController',function($scope,$location, JobService)
 	
 	console.log("Entering job controller")
 
-	$scope.job={jobid:'', title:'',description:'',skillsrequired:'',salary:'',location:''};
+	$scope.job={id:'', title:'',description:'',skillsrequired:'',salary:'',location:''};
 	$scope.jobs={};
 	$scope.postjob=function(){
 		
@@ -38,7 +38,9 @@ app.controller('JobController',function($scope,$location, JobService)
 		.then(function(response)
 					{
 							console.log('viewjob success')
-							$scope.job=response.data;
+							$scope.jobs=response.data;
+							console.log($scope.jobs)
+
 							console.log("success" + response.data)
 					},
 					
@@ -52,10 +54,10 @@ app.controller('JobController',function($scope,$location, JobService)
 	viewjob();
 	
 	
-	$scope.applied=function()
+	$scope.applied=function(id)
 	{
 		console.log("in applied");
-		JobService.applied.then(
+		JobService.applied(id).then(
 		function(response)
 		{
 			console.log("successfully applied");

@@ -17,10 +17,10 @@ app.factory('BlogService',function($http){
 		return $http.get("http://localhost:8080/PalsConnectBE/blog/get/"+ id)
 	}
 	
-	blogService.addComment=function(comment){
+	blogService.addComment=function(comment , id){
 		console.log(comment)
 
-		return $http.post("http://localhost:8080/PalsConnectBE/blog/comment",comment)
+		return $http.post("http://localhost:8080/PalsConnectBE/blog/comment/"+ id, comment)
 	}
 	blogService.getComments=function(blogId){
 		console.log('getcomments -- service')

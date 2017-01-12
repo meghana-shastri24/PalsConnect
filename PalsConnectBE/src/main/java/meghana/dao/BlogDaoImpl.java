@@ -45,16 +45,18 @@ public class BlogDaoImpl {
 	}
 
 	public List<BlogComment> getBlogComments(int blogId) {
-		Session session=sessionFactory.openSession();
+		Session session=sessionFactory.getCurrentSession();
 		Blog blogPost=(Blog)session.get(Blog.class, blogId);
 		List<BlogComment> blogComments=blogPost.getComments();
-		return blogComments;	}
+		return blogComments;	
+		
+	}
 
-	public Blog addBlogPostComment(RegisterUser user, BlogComment blogComment) {
-		Session session=sessionFactory.openSession();
+	public Blog addBlogPostComment(RegisterUser user, BlogComment blogComment, int id) {
+		Session session=sessionFactory.getCurrentSession();
 		 blogComment.setPostedby(user);
 		 blogComment.setPostedon(new Date());
-		 Blog blogPost=(Blog)session.get(Blog.class, blogComment.getBlogpost().getBlogid());
+		 Blog blogPost=(Blog)session.get(Blog.class, id);
 				 blogComment.setBlogpost(blogPost);
 		 session.merge(blogComment);
 		 session.flush();

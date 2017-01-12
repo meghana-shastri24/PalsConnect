@@ -76,8 +76,8 @@ private BlogDaoImpl blogdaoimpl;
 		return new ResponseEntity<List<BlogComment>>(blogComments,HttpStatus.OK);		
 	}
 	
-    @RequestMapping(value = "/comment", method = RequestMethod.POST)
-    public ResponseEntity<?> addBlogComment( @RequestBody BlogComment blogComment,HttpSession session) {
+    @RequestMapping(value = "/comment/{id}", method = RequestMethod.POST)
+    public ResponseEntity<?> addBlogComment( @RequestBody BlogComment blogComment, @PathVariable (value="id") int id, HttpSession session) {
 		RegisterUser user=(RegisterUser)session.getAttribute("pal");
 		if(user==null){
 			error error=new error(1,"Unauthroized user");
@@ -85,16 +85,14 @@ private BlogDaoImpl blogdaoimpl;
 		}
 		System.out.println("BLOG COMMENT is " + blogComment);
 		System.out.println("BLOG COMMENT BODY " + blogComment.getBody());
-		System.out.println("BLOG ID from blogpost " + blogComment.getBlogpost().getBlogid());
+		System.out.println("BLOG POST ID " + id);
 
-		System.out.println("BLOG POST FROM BLOGCOMMENT " + blogComment.getBlogpost());
-
-		Blog blogPost=blogdaoimpl.getBlogPost(blogComment.getBlogpost().getBlogid());
+		Blog blogPost=blogdaoimpl.getBlogPost(id);
 		if(blogPost==null){
 			error error=new error(2,"Blogpost not found");
 			return new ResponseEntity<error>(error,HttpStatus.NOT_FOUND);
 		}
-        Blog createdBlogPost= blogdaoimpl.addBlogPostComment(user, blogComment);
+        Blog createdBlogPost= blogdaoimpl.addBlogPostComment(user, blogComment, id);
         return new ResponseEntity<Blog>(createdBlogPost,HttpStatus.OK);
     }
 	

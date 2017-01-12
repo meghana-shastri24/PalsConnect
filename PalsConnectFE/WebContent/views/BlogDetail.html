@@ -3,46 +3,126 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="resources/materialize/css/materialize.min.css"/> 
+	<script src="resources/materialize/js/materialize.min.js"/></script>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+ 
+  <style>
+.card-panel
+{
+min-height:250px !important;
+height:100%;
+padding-top:10px;
+padding-bottom:10px;
+
+width:75%;
+position:relative;
+}
+
+.j
+{
+margin-top:-50px;
+height:350px;
+}
+.image{
+height:150%;
+width:120%;
+
+}
+
+.a
+{
+border:1px solid #e0e0e0;
+}
+.b
+{
+font-size:12px;
+}
+
+.c
+{
+font-size:18px;
+color:#b71c1c;
+margin-top:5px;
+}
+
+.d
+{
+margin-left:-65px;
+}
+
+.header
+{
+margin-top:-50px;}
+  </style>
 </head>
 <body>
+
 <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <div >{{blogPost.title}}</div>
-            
-            <span><strong>by: </strong>{{blogPost.postedby.username}}</span>
-            <span><strong>on: </strong>{{blogPost.postedon | date:'MM/dd/yyyy'}}</span>
-          
-          </div>
-          <div class="panel-body">
+      <div class="j col l9 offset-l2"><img class="image" src="images/tumblr.jpg"></div>
+    </div>
+    
+    <div class="section white">
+<div class="row">
+   <h4 class="header col offset-l3 center-align white-text">{{blogPost.title}}</h4>           
+</div>
+<div class="row">
+<div class="card-panel white col offset-l4 l7 center-align">
           {{blogPost.body}}
-          
-          </div>
-          </div>
-          </div>
-<a href="" ng-click="getComments(blogPost.blogid)" class="btn btn-default">Show Comments</a>
-<ul ng-show="showComments">
-<li ng-repeat="comment in comments" style="list-style: none;">
-<div>
-{{comment.body}}
- <span><strong>by: </strong>{{comment.postedby.username}}</span>
-            <span><strong>on: </strong>{{comment.postedon | date:'MM/dd/yyyy'}}</span>
 </div>
-</li>
-
-</ul>
+</div>
+          
+        <div class="row"> 
+         <span class="right">Posted by: <strong>{{blogPost.postedby.username}}</strong></span>
+            <span class="col offset-l3">Posted on: <strong>{{blogPost.postedon | date:'MM/dd/yyyy'}}</strong></span>
+          </div> 
+          
+    
+     
 
 
 <div class="row">
-<form>
-<input type="text" ng-model="b.blogid" hidden="true">
-<div class="col-sm-3 col-md-3 col-lg-2">
-<textarea required ng-model="comment.body"></textarea>
-<button ng-click="addComment()" class="btn btn-primary btn-block">Post Comment</button>
+    <form class="col s12 l8 offset-l3 m7 offset-m2">
+      <div class="row">
+        <div class="input-field col s12">
+        <input type="text" ng-model="b.blogid" hidden="true">
+          <input id="text" required ng-model="comment.body" type="text" ></input>
+          <label for="text">Comment : </label>
+        </div>
+        
+        <button ng-click="addComment(blogPost.blogid)" class="btn waves-effect  grey darken-4">Post Comment</button>
+        
+      </div>
+    </form>
+  </div>
+
+
+<div class="row">
+<div class="a section grey lighten-4 col l6 offset-l4 center-align z-depth-1" ng-repeat="comment in comments" ng-show="showComments">
+
+<p class="c left"><strong>{{comment.postedby.username}}</strong></p>
+<p class="b right">{{comment.postedon | date:'MM/dd/yyyy'}}</p><br><br>
+
+<p class="d left">{{comment.body}}</p>
+
 </div>
-</form>
 </div>
+
+
+
+
+
+
+
+
 </div>
+
+       
+         <script src="resources/materialize/js/jquery-3.1.1.min.js"/></script>
+       
 </body>
 </html>

@@ -1,6 +1,5 @@
 app.controller('AdminController', function($scope, AdminService, $cookieStore, $location, $rootScope)
 		{
-	$scope.job={username:'',email:'',role:'',salary:'',location:''}
 	$scope.pals;
 console.log("in admin controller");
 

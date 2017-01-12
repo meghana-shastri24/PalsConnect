@@ -33,24 +33,24 @@
 
 HIIIIIIIIIIIIIIII
 
-<div ng-repeat="Jobs in job">
+<div ng-repeat="j in jobs">
 
 <div class="container">
 <div class="row">
         <div class="col l8 s12 m9 offset-l4 offset-m2 center-align">
           <div class="card  white hoverable">
             <div class="card-content black-text">
-              <span class="card-title" style="font-weight:400px;">{{Jobs.title}}</span>
+              <span class="card-title" style="font-weight:400px;">{{j.title}}</span>
               <div class="divider"></div>
-              <p class="black-text">JOB DESCRIPTION : {{Jobs.description}}<br>
-              SKILLS REQUIRED : {{Jobs.skillsrequired}}<br>
-              SALARY : {{Jobs.salary}}<br>
-              LOCATION : {{Jobs.location}}<br>
-              POSTED ON : {{Jobs.postedon | date:'MM/dd/yyyy'}}<br>
+              <p class="black-text">JOB DESCRIPTION : {{j.description}}<br>
+              SKILLS REQUIRED : {{j.skillsrequired}}<br>
+              SALARY : {{j.salary}}<br>
+              LOCATION : {{j.location}}<br>
+              POSTED ON : {{j.postedon | date:'MM/dd/yyyy'}}<br>
               </p>
             </div>
             <div class="card-action">
-              <a class="waves-effect waves-light btn  indigo lighten-1" href="" ng-click="applied()">APPLY</a>
+              <a class="waves-effect waves-light btn  indigo lighten-1" href="" ng-click="applied(j.id)">APPLY</a>
             </div>
           </div>
         </div>

@@ -24,10 +24,10 @@ app.factory('JobService', function($http)
 		return $http.get(BASE_URL + "viewjob");
 	}
 	
-	jobservice.applied=function()
+	jobservice.applied=function(id)
 	{
 		console.log("applied in service")
-		return $http.put(BASE_URL  + "applied");
+		return $http.put(BASE_URL  + "applied/"+ id);
 	}
 	
 	return jobservice;

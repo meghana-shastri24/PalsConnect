@@ -51,7 +51,7 @@ private	SessionFactory sf;
 		return job;			
 	}
 
-	public void applyjob(AppliedJobs ja) {
+public void applyjob(AppliedJobs ja) {
 		Session session=sf.getCurrentSession();
 		session.save(ja);
 		session.flush();
