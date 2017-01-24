@@ -68,7 +68,6 @@ public class UserController {
 		
 	}
 	
-//7795614646
 	
 
 	
@@ -77,9 +76,12 @@ public class UserController {
 	@RequestMapping(value="/pals", method=RequestMethod.POST)
 	public ResponseEntity<?> register(@RequestBody RegisterUser user)
 	{
+		
+		
+		if(user.getPassword().equals(user.getCpassword()))
+		{
 		user.setIsonline(false);
 		user.setStatus('P');
-
 		RegisterUser pal=userdaoimpl.savePerson(user);
 		if(pal.getId()==0)
 		{
@@ -88,10 +90,23 @@ public class UserController {
 			return new ResponseEntity<error>(e,HttpStatus.CONFLICT);
 
 		}
+		
+		
 		else{
 			return new ResponseEntity<RegisterUser>(pal,HttpStatus.CREATED);
 
 		}
+		}
+		
+		
+		else
+		{
+			error e=new error(3,"Sorry unable to insert");
+
+			return new ResponseEntity<error>(e, HttpStatus.CONFLICT);
+		}
+		
+		
 	}
 	
 	//updateuser
@@ -105,20 +120,6 @@ public class UserController {
 		return new ResponseEntity<RegisterUser> (pal,HttpStatus.OK);
 	}
 
-	
-	//deleteuser
-	/*@RequestMapping(value="/pals/{id}", method=RequestMethod.DELETE)
-	public ResponseEntity<Void> deletepal(@PathVariable ("id") int id)
-	{
-		
-		RegisterUser pal=userdaoimpl.getuserbyid(id);
-		if(pal==null)
-			return new ResponseEntity<Void> (HttpStatus.NOT_FOUND);
-		userdaoimpl.deletepal(id);
-			return new ResponseEntity<Void> (HttpStatus.OK);
-		
-
-	}*/
 	
 	//login
 	@RequestMapping(value="/login", method=RequestMethod.POST)

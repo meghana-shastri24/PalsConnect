@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>  
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="resources/materialize/css/materialize.min.css"/> 
+	<script src="resources/materialize/js/materialize.min.js"/></script>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    
+    <style>
+   .card-panel
+   {
+   margin:0px;}
+    
+    </style>
+  </head>
+  <body >
+
+<div class="row">
+<h3 class="center">Group Chat With Your Friends</h3>
+      <form ng-submit="addMessage()" name="messageForm" class="col l8 offset-l3 s12">
+        <div class="row">
+          <div class="input-field ">
+            <input id="input_text" type="text" length="140" ng-model="message">
+            <label for="input_text">Compose Message</label>
+          </div>
+        
+        
+        <div>
+        <button class="btn-floating waves-effect waves-light" ng-disabled="message.length > max || message.length === 0" ><i class="material-icons prefix">send</i>
+ 		</button>
+        </div>
+       </div> 
+      
+      </form>
+    </div>
+       <div class="row">
+      <div class="message col s12 m8 offset-m2 l9 offset-l3" ng-repeat="message in messages | orderBy:'time':true" id="m">
+        <div class="card-panel grey lighten-4 z-depth-0">
+          <span class="Black-text">
+          
+        <time>{{message.time | date:'HH:mm'}}</time>
+        <span ng-class="{self: message.self}">{{message.message}}</span>
+          </span>
+        </div>
+             <div class="divider"></div>
+        
+      </div>
+    </div>
+
+</body>
+</html>

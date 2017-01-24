@@ -30,5 +30,21 @@ app.factory('JobService', function($http)
 		return $http.put(BASE_URL  + "applied/"+ id);
 	}
 	
+	jobservice.appliedjobs=function()
+	{
+		console.log('entering applied jibs in service')
+
+		return $http.get(BASE_URL + "appliedjob");
+	}
+	
+	
+	jobservice.deleteajob=function(jid)
+	{
+		console.log('entering delete job in service')
+
+		return $http.delete(BASE_URL + "deleteajob/" +jid);
+	}
+	
+	
 	return jobservice;
 		})

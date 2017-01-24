@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="resources/materialize/css/materialize.min.css"/> 
+	<script src="resources/materialize/js/materialize.min.js"/></script>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <style>
+  
+   p
+ {
+ padding-top:10px;
+    font-family:Trebuchet;
+ }
+  </style>
+</head>
+<body>
+
+
+<div ng-repeat="j in jo">
+
+<div class="container">
+<div class="row">
+        <div class="col l8 s12 m9 offset-l4 offset-m2 center-align">
+          <div class="card  white hoverable">
+ <a class="right" href="" ng-click="deleteajob(j.id)"><i class="material-icons">clear</i></a>
+          
+            <div class="card-content black-text">
+              <span class="card-title" style="font-weight:400px;">{{j.title}}</span>
+              <div class="divider"></div>
+              <p class="black-text">JOB DESCRIPTION : {{j.description}}<br>
+              SKILLS REQUIRED : {{j.skillsrequired}}<br>
+              SALARY : {{j.salary}}<br>
+              LOCATION : {{j.location}}<br>
+              POSTED ON : {{j.postedon | date:'MM/dd/yyyy'}}<br>
+              </p>
+            </div>
+         
+          </div>
+        </div>
+      </div>
+            
+         
+ </div>        
+         
+ </div>
+ <script src="resources/materialize/js/jquery-3.1.1.min.js"/></script>
+</body>
+</html>

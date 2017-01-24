@@ -24,6 +24,13 @@ app.config(function($routeProvider)
 		controller:'JobController'
 
 			})
+			
+	.when('/appliedjobs',
+			{
+		templateUrl:'views/appliedjobs.html',
+		controller:'JobController'
+
+			})
 			.when('/postjob',
 			{
 		templateUrl:'views/postjob.html',
@@ -65,6 +72,13 @@ app.config(function($routeProvider)
 			templateUrl:'views/pending.html'
 		})
 		
+		.when('/getfriends',
+		{
+		
+			controller:'FriendController',
+			templateUrl:'views/friends.html'
+		})
+		
 		.when('/newblog',
 		{
 		
@@ -78,6 +92,15 @@ app.config(function($routeProvider)
 			controller:'BlogController',
 			templateUrl:'views/getBlogs.html'
 		})
+		
+		
+		.when('/MyProfile',
+		{
+		
+			controller:'ProfileController',
+			templateUrl:'views/MyProfile.html'
+		})
+		
 		
 		.when('/getBlogDetail/:blogid',
 		{
@@ -98,6 +121,18 @@ app.config(function($routeProvider)
 		
 		templateUrl: 'views/userslist.html'
 	})
+	
+	
+	.when('/chat',
+	{
+		controller:'ChatController',
+		
+		templateUrl: 'views/chat.html'
+	})
+	
+	
+	
+
 		})
 
 app.run(function($cookieStore,$rootScope,$location,PalService){  //entry point

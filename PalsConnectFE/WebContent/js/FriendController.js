@@ -2,10 +2,10 @@ app.controller('FriendController', function(FriendService, $scope, $location, $r
 		{
 	
 	
-	alert('entering friend controller')
 
 	$scope.pal={username:'',email:'',password:'',dob:'',role:'', cpassword:'', gender:'', phno:'', isonline:'', status:''}
 	$scope.pals={};
+	$scope.friends1={};
 
 	
 	
@@ -23,18 +23,23 @@ app.controller('FriendController', function(FriendService, $scope, $location, $r
 		
 		
 	
-	$scope.friends= function()
+	$scope.getfriends=function()
 	{
 		FriendService.getAllFriends()
 		.then(function(response){
 			console.log('get all Friends controller')
 			console.log(response.status)
-			$scope.friends= response.data;
+			$scope.friends1= response.data;
+			$rootScope.fr=$scope.friends1;
+			console.log($scope.friends1)
+
 		},
 		function(response){
 			console.log(response.data)
 		})
 	}
+	
+	
 	
 	$scope.updatePendingRequest=function(fromId,friendStatus){
 		alert('updateFriendrequest')
@@ -63,7 +68,8 @@ app.controller('FriendController', function(FriendService, $scope, $location, $r
 	
 	
 		}
-		
+	if($location.path()=='/getfriends'){if($rootScope.currentUser!=null)$scope.getfriends();}
+	
 	})
 	
 	

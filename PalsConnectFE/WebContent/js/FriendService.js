@@ -16,7 +16,10 @@ app.factory('FriendService',function($http){
 		return $http.put(BASE_URL + "updateFriendRequest/"+ status+"/"+ fromid)
 	}
 	
-	
+	friendservice.getAllFriends=function(){
+		console.log('in get my friends');
+		return $http.get(BASE_URL + "getAllFriends")
+	}
 	
 	
 	return friendservice;

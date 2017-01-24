@@ -1,6 +1,8 @@
 app.controller('PalController',  function($scope, PalService, $cookieStore, $location, $rootScope)
 		{
 	
+	$scope.pal={username:'',email:'',password:'',dob:'',role:'', cpassword:'', gender:'', phno:'', isonline:'', status:''}
+	
 	$scope.message;
 
 	console.log('entering the controller')
@@ -64,8 +66,7 @@ app.controller('PalController',  function($scope, PalService, $cookieStore, $loc
 		{
 	
 					alert("Friend request sent");
-					getallpals();
-					$location.path("allpals")
+					getallpals().then(function(){$location.path('/sendrequest')});
 					
 		},
 		
@@ -99,7 +100,6 @@ app.controller('PalController',  function($scope, PalService, $cookieStore, $loc
 	
 	getallpals();
 		
-	
 	
 
 		})

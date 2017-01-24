@@ -1,15 +1,12 @@
 package meghana.model;
 
-
-
-
-
 import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -20,15 +17,34 @@ public class RegisterUser {
 @GeneratedValue
 private int id;	
 
+
 private	String username;
+
+
 private	String email;
+
+
 private	String password;
+
+
 private String cpassword;
+
+
 private long phno;
+
+
 private String gender;
+
+
 private boolean isonline;
+
+
 private Date dob;
+
+
 private String role;
+
+
 private char status;
 
 

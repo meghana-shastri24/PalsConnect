@@ -32,12 +32,8 @@ $scope.permit=function(pal)
 			function(response)
 			
 			{
-				$scope.getusers().then(
-				function(response)
-				{
-					$location.path("/userslist");
-				}
-				)
+				$root.reload();	
+				$location.path("/userslist");
 				console.log("Permitted");
 				
 			},
@@ -56,25 +52,21 @@ $scope.deny=function(p)
 	
 			function(response)
 			{
-				$scope.getusers().then(
-						function(response)
-						{
-							$location.path("/userslist");
-						}
-						)
-				
-				console.log("Denied");
+			$root.reload();	
+			$location.path("/userslist");
+			console.log("Denied");
 				
 			},
 			
 			function(response)
 			{
-				cosole.log("Erroorrrr");
+				console.log("Erroorrrr");
 			}
 	
 	)}
 
 	
+if($location.path()=='/userslist'){if($rootScope.currentUser.role=='ADMIN')$scope.getusers();}
 	
 	
 	

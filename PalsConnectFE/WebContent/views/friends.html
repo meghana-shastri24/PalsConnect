@@ -3,8 +3,47 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="resources/materialize/css/materialize.min.css"/> 
+	<script src="resources/materialize/js/materialize.min.js"/></script>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-Hiiii am in friends....
+<div class="row">
+<h3 class="center-align"><strong>Friends</strong></h3>
+</div>
+<div  ng-repeat="f in friends1">
+<div class="row" >
+      <div class="col l8 s12 m9 offset-l4 offset-m2">
+        
+        <ul class="collection">
+    <li class="collection-item avatar">
+      <img src="images/images/{{f.username}}" alt="" class="circle a">
+   
+     
+      <span class="title black-text">
+      <h5>{{f.username}}</h5>
+	  </span>
+	
+      <p>   {{f.role}}<br>
+        {{f.email}} 
+      </p>
+      
+      
+    </li>
+    </ul>
+    
+      </div>
+    </div>
+    </div>  
+  <p class="right">
+      <a class="btn waves-effect waves-light" href="#/chat"> Send Message</a>  
+    
+    
+
+  <script src="resources/materialize/js/jquery-3.1.1.min.js"/></script>
+	
 </body>
 </html>

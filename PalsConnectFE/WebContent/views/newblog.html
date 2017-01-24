@@ -32,11 +32,6 @@ background-size:cover;
      color: white;
    }
    
-   
-   .input-field input[type=password]:focus + label {
-     color: white;
-   }
-   
    .input-field input[type=textarea1]:focus + label {
      color: white;
    }
@@ -45,20 +40,18 @@ background-size:cover;
 </head>
 <body>
 <div class="container center-align">
-<form>
-     					 <div class="row ">
-     					 <div class="col  l10 s12 m6 offset-m2 offset-l3">
-     					 <h2 class="center-align"> Post your article</h2>
+<form >
+    <div class="row ">
+    <div class="col  l10 s12 m6 offset-m2 offset-l3">
+    <h2 class="center-align"> Post your article</h2>
      					 
-					<div class="input-field col s12">
-						<label for="title" data-success="right">Title</label>
-						<input type="text"  ng-model=blogPost.title id="title" style="border-bottom: 1px solid white;
-     box-shadow: 0 1px 0 0 white;">
-					</div>
+	<div class="input-field col s12">
+	<input type="text"  ng-model=blogPost.title id="title" placeholder=" Blog Title" style="border: 1px solid white;
+     box-shadow: 0 1px 0 0 white; background-color:white;">
+	</div>
 		<div class="input-field col s12">
-			<label for="textarea1" >Description</label>
-			<textarea id="textarea1" ng-model=blogPost.body  class="materialize-textarea validate" style="border-bottom: 1px solid white;
-     box-shadow: 0 1px 0 0 white;"></textarea>
+			<textarea ng-model=blogPost.body  class="materialize-textarea black-text" placeholder=" Blog Content" style="border: 1px solid white;
+     box-shadow: 0 1px 0 0 white; background-color:white;"></textarea>
 						
 		</div>
 		<p  class="center-align">

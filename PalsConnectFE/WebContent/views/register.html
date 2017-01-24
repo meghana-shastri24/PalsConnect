@@ -11,55 +11,56 @@
 <style>
 
     body{
-		background: url(images/friends1.jpg) center center fixed no-repeat;
+		background: url(images/12.jpg) center center fixed no-repeat;
 		background-size:cover;
+		margin-top:20px;
 		}
 		
 		.input-field label {
-     color: white;
+     color: Black;
    }
 
    .input-field input[type=text]:focus + label {
-     color: white;
+     color: black;
    }
    
    
    .input-field input[type=password]:focus + label {
-     color: white;
+     color: black;
    }
 
    
    
    /* label underline focus color */
    .input-field input[type=text]:focus {
-     border-bottom: 1px solid white;
-     box-shadow: 0 1px 0 0 white;
+     border-bottom: 1px solid black;
+     box-shadow: 0 1px 0 0 black;
    }
    
    .input-field input[type=password]:focus {
-     border-bottom: 1px solid white;
-     box-shadow: 0 1px 0 0 white;
+     border-bottom: 1px solid black;
+     box-shadow: 0 1px 0 0 black;
    }
    
    .input-field input[type=email]:focus {
-     border-bottom: 1px solid white;
-     box-shadow: 0 1px 0 0 white;
+     border-bottom: 1px solid black;
+     box-shadow: 0 1px 0 0 black;
    }
    
    .input-field input[type=date]:focus {
-     border-bottom: 1px solid white;
-     box-shadow: 0 1px 0 0 white;
+     border-bottom: 1px solid black;
+     box-shadow: 0 1px 0 0 black;
    }
    
    .input-field input[type=radio]:focus {
-     border-bottom: 1px solid white;
-     box-shadow: 0 1px 0 0 white;
+     border-bottom: 1px solid black;
+     box-shadow: 0 1px 0 0 black;
    }
    
    /* valid color */
    .input-field input[type=text].valid {
      border-bottom: 1px solid green;
-     box-shadow: 0 1px 0 0 white;
+     box-shadow: 0 1px 0 0 black;
    }
    
    
@@ -71,9 +72,29 @@
 
 h1
 {
-color:white;
+color:black;
 font-style:italic;
-    font-family: GillSans;
+font-family: GillSans;
+margin-top:-30px;
+}
+
+#p
+{
+margin-top:20px;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #000;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #000;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #000;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #000;
 }
 </style>
 
@@ -84,48 +105,50 @@ font-style:italic;
 <div class="container center-align">
 
 			<div class="row">
-						<h1 class="loginheading">Connect With Us</h1>
+						<h1 class="loginheading white-text col offset-l5">Connect With Us</h1>
 			
-    			<form class="col s12 m6 l6 offset-m2 offset-l3">
+    			<form class="col s12 m6 l6 offset-m2 offset-l4">
      					 <div class="row ">
 					<div class="input-field col s12">
-						<label for="name" data-error="wrong" data-success="right">Username</label>
-						<input type="text" class="validate"  ng-model=pal.username id="name" >
+						<label for="name" data-error="wrong"  data-success="right">Username</label>
+						<input type="text" class="validate"  ng-model=pal.username id="name" pattern=".{4,15}" required="required" >
 					</div>
 					<div class="input-field col s12">
 						<label for="email" data-error="wrong" data-success="right">Email</label>
-						<input type="email" class="validate"  ng-model=pal.email  id="email" >
+						<input type="email" class="validate"  ng-model=pal.email  id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required >
 					</div>
 					<div class="input-field col s12">
 						<label for="password" data-error="wrong" data-success="right">Password</label>
-						<input type="password" class="validate" ng-model=pal.password  id="password" >
+						<input type="password" class="validate" ng-model=pal.password  id="password" pattern=".{8,}"  required >
 					</div>
 					<div class="input-field col s12">
 						<label for="cpassword" data-error="wrong" data-success="right">Confirm Passowrd</label>
-						<input type="password" class="validate" ng-model=pal.cpassword  id="cpassword" >
+						<input type="password" class="validate" ng-model=pal.cpassword  id="cpassword" pattern=".{8,}"  required >
 					</div>
-					<div class="input field col s12"><label class="white-text" for="gender">Gender</label> 
-		<input type="radio" class="with-gap white-text " name="gender" ng-model="pal.gender" value="Male"  id="male" required> <label for="male" class="white-text">Male</label>
-		<input type="radio" class="with-gap white-text" name="gender" ng-model="pal.gender" value="Female"  id="female" > <label for="female" class="white-text">Female</label>
+					
+		<div class="col s12 m12"><label  class="col m2 s12" style="font-size:15px;color:black">Gender</label> 
+			<input type="radio" name="gender" ng-model="pal.gender" value="Male"  class="input-field col m2 s6 center-align with-gap"  id="male" required> <label class="black-text" for="male">Male</label>
+			<input type="radio" name="gender" ng-model="pal.gender" value="Female"  class="input-field col m2 s6 center-align with-gap"  id="female" > <label class="black-text" for="female">Female</label>
 		</div>
 					<div class="input-field col s12">
-					<label for="date" data-error="wrong" data-success="right">Date of Birth</label>
 					
-						<input class="white-text datepicker validate active" type="date"   ng-model=pal.dob  id="date">
+						<input class="black-text datepicker validate" type="date" placeholder="Date Of Birth"  ng-model=pal.dob  id="date">
 					</div>
-					<div class="input-field col s12">
+					<div class="input-field col s12 ">
 						<label for="phno" data-error="wrong" data-success="right">Phone Number</label>
-						<input type="text" class="validate" ng-model=pal.phno   >
+						<input type="text" class="validate" ng-model=pal.phno pattern="^\d{10}$" required  >
 					</div>
-					<div class="input field col s12"><label class="white-text" for="role">Role</label> 
-		<input type="radio" class="with-gap" name="role" ng-model="pal.role" value="Student"  id="student" required> <label for="student" class="white-text">Student</label>
-<input type="radio" class="with-gap" name="role" ng-model="pal.role" value="Employee"  id="employee" required> <label for="employee" class="white-text">Employee</label>		</div>
-	<input type="radio" class="with-gap" name="role" ng-model="pal.role" value="Trainee"  id="trainee" required> <label for="trainee" class="white-text">Trainee</label>		</div>
 					
+
+					<div class="col s12 m12"><label class="col m1 s12"style="font-size:15px;color:black">Role</label>
+		<input type="radio" name="role" ng-model="pal.role" value="Employee" class="input-field col m2 s6 center-align with-gap" id="employee" required> <label class="black-text" for="employee">Employee</label>
+		<input type="radio" name="role" ng-model="pal.role" value="Trainee" class="input-field col m2 s6 center-align with-gap"id="contractor"> <label class="black-text" for="contractor">Contractor</label>
+		<input type="radio" name="role" ng-model="pal.role" value="Student" class="input-field col m2 s6 center-align with-gap"id="student"> <label class="black-text" for="student">Student</label>		
+		</div>
 					
 				
-				 <p class=" center-align">
-                                <input class="btn btn-medium waves-effect waves-light" type="submit" value="Register" name="action" ng-click="palregister()"></input>
+				 <p class= "center-align">
+                               <input class="btn btn-medium waves-effect waves-light orange darken-2" id="p" type="submit" value="Register" name="action" ng-click="palregister()"></input>
                             
                  </p>
                  
@@ -151,7 +174,7 @@ $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15 // Creates a dropdown of 15 years to control year
   });
-
+  
 </script>
 	
 

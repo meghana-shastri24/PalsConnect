@@ -9,7 +9,15 @@
 	<link rel="stylesheet" href="resources/materialize/css/materialize.min.css"/> 
 	<script src="resources/materialize/js/materialize.min.js"/></script>
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-            
+    
+    <style>
+    
+    #edit
+    {
+    top:-30px;
+    left:190px;
+    }
+    </style>        
       
     
 
@@ -17,11 +25,25 @@
 </head>
 <body ng-app="pals">
 
+
+<div ng-show="currentUser.id" class="fixed-action-btn horizontal" style="top:15px; left:auto; right:50px; bottom:auto;">
+    <a class="btn-floating btn-large red">
+      <i class="material-icons large">arrow_back</i>
+    </a>
+    <ul>
+      <li><a href="#/pendingrequest" class="btn-floating yellow darken-2"><i class="material-icons">people</i></a></li>
+      <li><a href="#/sendrequest" class="btn-floating green"><i class="material-icons">person_add</i></a></li>
+      <li><a href="#/MyProfile"class="btn-floating blue"><i class="material-icons">mode_edit</i></a></li>
+            <li><a href="#/chat" class="btn-floating pink"><i class="material-icons">chat</i></a></li>
+      
+    </ul>
+  </div>
+
    <ul id="slide-out" class="side-nav fixed">
     <li>
     <div class="userView" style="height:250px;">
     
-        	 <a class="btn-floating btn-medium waves-light waves-effect red" href="#/imgupload"><i class="material-icons">mode_edit</i></a>
+        	 <a ng-show="currentUser.id" class="btn-floating btn-flat waves-light waves-effect red" id="edit" href="#/imgupload"><i class="material-icons">mode_edit</i></a>
     
       <div class="background" >
         <img ng-hide="currentUser.id" src="images/img.jpg" style="height:250px; width:100%;">
@@ -31,15 +53,18 @@
     </div></li>
     
     <li><a ng-hide="currentUser.id" class="waves-effect waves-red" href="#/">Home</a></li>
-        <li><a ng-show="currentUser.id" class="waves-effect waves-red" href="#/welcome">Home</a></li>
-            <li><a ng-show="currentUser.role=='ADMIN'" class="waves-effect waves-red" href="#/admin">Home</a></li>
+        <li><a ng-show="currentUser.id"   class="waves-effect waves-red" href="#/welcome">Home</a></li>
+            <li><a ng-show="currentUser.role=='ADMIN'" class="waves-effect waves-red" href="#/userslist">Provide Access</a></li>
     
     <li ng-hide="currentUser.id"><a  class="waves-effect waves-red"href="#/register">Register</a></li>
         <li ng-hide="currentUser.id"><a class="waves-effect waves-red" href="#/login">Login</a></li>
     	
     	        <li ng-show="currentUser.id"><a class="waves-effect waves-red " href="#/viewjob">Careers</a></li>
+    	        <li ng-show="currentUser.id"><a class="waves-effect waves-red " href="#/newblog">Create Your Blog</a></li>
+    	        <li ng-show="currentUser.id"><a class="waves-effect waves-red " href="#/appliedjobs">View Applied Jobs</a></li>
     	        
-    	        
+    	        <li ng-show="currentUser.id"><a class="waves-effect waves-red " href="#/getfriends">My Pals</a></li>
+
     	        <li ng-show="currentUser.role=='ADMIN'"><a class="waves-effect waves-red" href="#/postjob">Post Job</a></li>
     	        
     	        <li ng-show="currentUser.id || currentUser.role=='ADMIN'"><a class="waves-effect waves-red" href="" ng-click="logout()">Logout</a></li>
@@ -68,7 +93,9 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-resource.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>   
 
-	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.2/lodash.min.js"></script>
 
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="js/controller.js"></script>
@@ -84,6 +111,12 @@
    <script type="text/javascript" src="js/BlogController.js"></script>
 <script type="text/javascript" src="js/BlogService.js"></script>
 
+<script type="text/javascript" src="js/ProfileController.js"></script>
+<script type="text/javascript" src="js/ProfileService.js"></script>
+
  <script type="text/javascript" src="js/BlogDController.js"></script>
+ 
+ <script type="text/javascript" src="js/ChatController.js"></script>
+<script type="text/javascript" src="js/ChatService.js"></script>
 </body>
 </html>

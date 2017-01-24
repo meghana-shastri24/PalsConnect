@@ -48,7 +48,8 @@ public class BlogDaoImpl {
 		Session session=sessionFactory.getCurrentSession();
 		Blog blogPost=(Blog)session.get(Blog.class, blogId);
 		List<BlogComment> blogComments=blogPost.getComments();
-		return blogComments;	
+		return blogComments;
+		
 		
 	}
 
@@ -63,5 +64,35 @@ public class BlogDaoImpl {
 		 return blogPost;
 		 
 	}
+
+	public List<Blog> getBlogPost1(int id) {
+		Session session=sessionFactory.getCurrentSession();
+		Query query=session.createQuery("from Blog where postedby=?");
+		query.setInteger(0, id);
+		List<Blog> blogPosts = query.list();
+		return blogPosts;
+	}
+	
+	public void deleteblogcomments(Blog bp) {
+		Session session=sessionFactory.getCurrentSession();
+		Query query=session.createQuery("delete from BlogComment where blogpost=:id");
+		query.setParameter("id", bp);
+		query.executeUpdate();
+		session.flush();
+		
+	}
+
+
+
+	public void deleteblog(int id) {
+		Session session=sessionFactory.getCurrentSession();
+		Query query=session.createQuery("delete from Blog where id=:bi");
+		query.setParameter("bi", id);
+		query.executeUpdate();
+		session.flush();
+		
+		
+	}
+
 
 }

@@ -95,6 +95,14 @@ public void applyjob(AppliedJobs ja) {
 		session.flush();
 		return jobs;
 	}
+	public void deleteajob(int id, int jid) {
+		Session session=sf.getCurrentSession();
+		Query query=session.createQuery("delete from AppliedJobs where palid=:id and jobid=:jid");
+		query.setParameter("jid", jid);
+		query.setParameter("id", id);
+		query.executeUpdate();
+		session.flush();
+	}
 
 	
 

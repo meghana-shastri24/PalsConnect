@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Profile</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="resources/materialize/css/materialize.min.css"/> 
+	<script src="resources/materialize/js/materialize.min.js"/></script>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    
+    <style>
+    
+    .image{
+height:100%;
+width:120%;
+
+}
+
+
+.card {
+ 
+  border-radius: 2px;
+  display: inline-block;
+  height: 300px;
+  margin: 1rem;
+  position: relative;
+  width: 300px;
+}
+
+.a
+{
+height:25%;
+width:25%;
+margin-top:-150px;
+}
+
+.j
+{
+margin-top:-150px;
+height:350px;
+}
+
+.card
+{
+margin-top: 50px;
+height:70%;
+}
+
+hr
+{
+width:10%;
+}
+
+ h3
+  {
+  color:#4a148c;
+  font-family:Pypyrus;
+  font-style:italic;
+  margin-top:5px;
+  }
+
+h5
+{
+color:black;
+}
+
+.
+{
+top:30px;
+}
+ 
+.collection:hover
+{
+box-shadow: 1px 1px 5px 0.5px grey;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="row">
+
+<h2 class="center-align">Hello {{currentUser.username}}!!</h2>
+ 
+     <div class="j col l9 m12 s12 offset-l2"><img class="image" src="images/Android-L-Material-Design-Wallpapers-7.png">
+     
+        
+</div>
+
+
+<div class="ui">
+
+<img class="a circle col offset-m9 hide-on-small-only offset-l9" src="images/images/{{currentUser.username}}">
+</div>
+      
+    </div>
+
+  
+
+
+<div class="row">
+<h3 class="center">My Pals</h3>
+<hr>
+<div class="col l1 offset-l3" ng-repeat="f in friends">
+<div class="card small">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="images/images/{{f.username}}">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">{{f.username}}<i class="material-icons right">more_vert</i></span>
+      <p><span ng-show="{{f.isonline}}">Your friend is Online</span>
+      <span ng-hide="{{f.isonline}}">Your friend is offline</span>
+</p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Details<i class="material-icons right">close</i></span>
+      <p>Email Id: {{f.email}}<br>
+      	 Role: {{f.role}}<br>
+      	 Date of Birth: {{f.dob}}<br>
+      	 </p>
+    </div>
+  </div>
+</div>
+</div>  
+
+
+<div>
+
+<h3 class="center">My Blogs</h3>
+<hr>
+
+
+<div class="container" ng-repeat="b in blogs | orderBy:'postedon'" style="margin-top:40px;">
+<div class="row" >
+      <div class="col l8 s12 m9 offset-l4 offset-m2">
+        
+        <ul class="collection">
+    <li>
+   <a class="right" href="" ng-click="deleteblog(b.blogid)"><i class="material-icons">clear</i></a>
+   <a href="#/getBlogDetail/{{b.blogid}}">  
+      <span class="title">
+      <h5>{{b.title}}</h5>
+	  </span>
+	</a> 
+      <p>  <br>
+        {{b.postedon | date:'MM/dd/yyyy'}} 
+      </p>
+    </li>
+    </ul>
+    
+      </div>
+    </div>
+        
+        
+        
+        
+        
+    
+    
+    </div>    
+
+</div>        
+
+
+	  <script src="resources/materialize/js/jquery-3.1.1.min.js"/></script>
+
+
+</body>
+</html>

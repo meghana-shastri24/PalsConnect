@@ -46,6 +46,15 @@ public class DpController {
                  getUploadFile.setDp(aFile.getBytes()); 
                  getUploadFile.setUsername(pals.getUsername());
                  dpdaoimpl.update(getUploadFile);
+                 byte[] imagefiles=getUploadFile.getDp();
+                 try{
+		         		File file=new File("C:/Users/user/workspace/PalsConnectFE/WebContent/images/images/"+pals.getUsername());
+		         		FileOutputStream fos = new FileOutputStream(file);
+		         		fos.write(imagefiles);
+		         		fos.close();
+		         		}catch(Exception e){
+		         		e.printStackTrace();
+		         		}
              }
              
              
@@ -56,9 +65,8 @@ public class DpController {
                 uploadFile.setDp(aFile.getBytes()); 
                 uploadFile.setUsername(pals.getUsername());
                 dpdaoimpl.save(uploadFile);
-             }    
-		             byte[] imagefiles=getUploadFile.getDp();  
-		         	try{
+	             byte[] imagefiles=uploadFile.getDp();  
+	             try{
 		         		File file=new File("C:/Users/user/workspace/PalsConnectFE/WebContent/images/images/"+pals.getUsername());
 		         		FileOutputStream fos = new FileOutputStream(file);
 		         		fos.write(imagefiles);
@@ -66,6 +74,10 @@ public class DpController {
 		         		}catch(Exception e){
 		         		e.printStackTrace();
 		         		}
+
+             }    
+		               
+		         	
                     session.removeAttribute("pal");
             		session.invalidate();
          }

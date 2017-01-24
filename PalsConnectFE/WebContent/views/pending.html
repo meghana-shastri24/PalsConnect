@@ -13,30 +13,36 @@
 
 </head>
 <body>
-hiiiiiiiii
+<h3 class="center-align">Pending Requests</h3>
 
-<div ng-repeat="p in pals">
 <div class="row">
-        <div class="col s12 m7">
-          <div class="card">
-            <div class="card-image">
-              <img src="images/friends.jpg">
-              <span class="card-title">{{p.username}}</span>
-            </div>
-            <div class="card-content">
-              <p>{{p.role}}<br>
-              		{{p.email}}<br></p>
-            </div>
-            <div class="card-action">
-              <a class="btn-medium waves-light waves-effect" ng-click="updatePendingRequest(p.username,'A' )">Accept</a>
-              <a class="btn-medium waves-light waves-effect" ng-click="updatePendingRequest(p.username, 'R')">Reject</a>
-   
-              
-            </div>
-          </div>
-        </div>
-      </div>
- </div>        <script src="resources/materialize/js/jquery-3.1.1.min.js"/></script>
+	<div ng-repeat="p in pals">
+	<div class="col s12 m4 l3 offset-l5">
+	
+	<div class="card">
+	
+		<div class="card-image">
+			<img class="responsive-img" src="images/images{{p.username}}">
+			<span class="card-title">{{p.username}}</span>
+		</div>
+		
+		<div class="card-content">
+			<p>Role : {{p.role}}</p>
+			<p>Email : {{p.email}}</p>
+		</div>
+		
+		<div class="card-action">
+			<a  ng-click="updatePendingRequest(p.username,'A')">Accept</a>
+			<a  ng-click="updatePendingRequest(p.username,'R')">Reject</a>
+		</div>
+		
+	</div>
+	
+	</div>
+	</div>
+	</div>          
+        
+ 
     
 </body>
 </html>

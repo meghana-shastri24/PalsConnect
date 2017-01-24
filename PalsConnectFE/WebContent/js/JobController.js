@@ -74,6 +74,46 @@ app.controller('JobController',function($scope,$location, JobService)
 		)
 	}
 	
+	function appliedjobs()
+	{
+		console.log('entering viewjob in controller')
+
+		JobService.appliedjobs()
+		.then(function(response)
+					{
+							console.log('get applied jobs success')
+							$scope.jo=response.data;
+							console.log($scope.jo)
+
+							console.log("success" + response.data)
+					},
+					
+					function(response)
+					{
+						console.log('get applied jobs failure')
+
+					})
+	}
+
+	appliedjobs();
 	
+	$scope.deleteajob=function(jid)
+	{
+		console.log("In delete job in controller")
+		JobService.deleteajob(jid).then(
+				
+		function(response)
+		{
+			alert("Successfully deleted the applied job");
+			appliedjobs();
+		},
+		
+		function(response)
+		{
+			alert("Sorry unable to remove the job");
+		}
+		
+		)
+	}
 	
 		})

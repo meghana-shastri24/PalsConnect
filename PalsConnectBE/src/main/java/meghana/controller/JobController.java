@@ -123,4 +123,25 @@ public class JobController {
 	}	
 
 
+	@RequestMapping(value="/deleteajob/{jid}", method=RequestMethod.DELETE)
+	public ResponseEntity<?> deleteajob(@PathVariable (value="jid") int id, HttpSession session)
+	{
+		System.out.println("In delete job");
+		RegisterUser user=(RegisterUser)session.getAttribute("pal");
+		if(user==null)
+		{
+			error e=new error(1, "Unauthorized User");
+			return new ResponseEntity<error>(e, HttpStatus.UNAUTHORIZED);
+		}
+		
+		else
+		{
+		
+			jobdaoimpl.deleteajob(user.getId(),id);
+			return new ResponseEntity<Job>(HttpStatus.OK);
+
+		}
+		
+		
+	}
 }

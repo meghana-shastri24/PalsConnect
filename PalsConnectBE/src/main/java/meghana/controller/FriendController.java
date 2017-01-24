@@ -40,22 +40,29 @@ public class FriendController {
 	@RequestMapping(value="/getAllFriends",method=RequestMethod.GET)
 		public ResponseEntity<?> getAllFriends(HttpSession session)
 	{
-		System.out.println("in fc be");
 		RegisterUser user=(RegisterUser)session.getAttribute("pal");
-		System.out.println(user);
 
 			if(user!=null){
+			
+			List<RegisterUser> k=new ArrayList<RegisterUser>();
 			List<Friend> friends=frienddaoimpl.getallfriends(user.getUsername());
-			System.out.println(friends);
-			return new ResponseEntity<List<Friend>>(friends,HttpStatus.OK);
+
+			if(friends!=null){
+				for(Friend f:friends){
+					if(f.getFromname().equals(user.getUsername()))
+					k.add(userdaoimpl.getuserbyid(f.getToname()));
+					else k.add(userdaoimpl.getuserbyid(f.getFromname()));
+
+				}
+			}
+			return new ResponseEntity<List<RegisterUser>>(k,HttpStatus.OK);
 			}
 			else
-			{
-				error e=new error(0,"Please login to continue");
-
-				return new ResponseEntity<error>(e,HttpStatus.UNAUTHORIZED);
-			}
+				return new ResponseEntity<error>(new error(1,"Unauthorized user"),HttpStatus.UNAUTHORIZED);
 		}
+		
+
+	
 	
 	
 	@RequestMapping(value="/friendRequest",method=RequestMethod.POST)

@@ -102,7 +102,7 @@ margin-top:-50px;}
 
 
 <div class="row">
-<div class="a section grey lighten-4 col l6 offset-l4 center-align z-depth-1" ng-repeat="comment in comments" ng-show="showComments">
+<div class="a section grey lighten-4 col l6 offset-l4 center-align z-depth-1" ng-repeat="comment in comments | orderBy : '-postedon'" ng-show="showComments">
 
 <p class="c left"><strong>{{comment.postedby.username}}</strong></p>
 <p class="b right">{{comment.postedon | date:'MM/dd/yyyy'}}</p><br><br>

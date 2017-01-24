@@ -11,28 +11,52 @@
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   
   <style>
-  
-  
+   
+  h3
+  {
+  color:#4a148c;
+  font-family:Pypyrus;
+  font-style:italic;
+  margin-top:5px;
+  }
 
+h5
+{
+color:black;
+}
 
-
-  
+.
+{
+top:30px;
+}
+ 
+.collection:hover
+{
+box-shadow: 1px 1px 5px 0.5px grey;
+}
+.a
+{
+width:100px;
+height:100px;
+}
   
   </style>  
 </head>
 <body>
-<div class="container" ng-repeat="b in blogPosts">
+<div class="row">
+<h3 class="center-align"><strong>BLOGS</strong></h3>
+</div>
+<div class="container" ng-repeat="b in blogPosts | orderBy:'postedon'">
 <div class="row" >
-      <div class="col l8 s12 m5 offset-l3 offset-m2">
+      <div class="col l8 s12 m9 offset-l4 offset-m2">
         
         <ul class="collection">
     <li class="collection-item avatar">
-      <img src="images/images/b.postedby.username" alt="" class="circle">
+      <img src="images/images/{{b.postedby.username}}" alt="" class="circle a">
    
    <a href="#/getBlogDetail/{{b.blogid}}">  
       <span class="title">
-      {{b.title}}
-      {{b.postedby.username}}
+      <h5>{{b.title}}</h5>
 	  </span>
 	</a> 
       <p>   {{b.postedby.username}}<br>
